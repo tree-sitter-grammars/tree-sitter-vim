@@ -645,6 +645,14 @@
           "named": true
         },
         {
+          "type": "au_nested",
+          "named": true
+        },
+        {
+          "type": "au_once",
+          "named": true
+        },
+        {
           "type": "augroup_name",
           "named": true
         },
@@ -10114,14 +10122,6 @@
     "named": false
   },
   {
-    "type": "++nested",
-    "named": false
-  },
-  {
-    "type": "++once",
-    "named": false
-  },
-  {
     "type": "+=",
     "named": false
   },
@@ -10383,6 +10383,14 @@
   },
   {
     "type": "au_event",
+    "named": true
+  },
+  {
+    "type": "au_nested",
+    "named": true
+  },
+  {
+    "type": "au_once",
     "named": true
   },
   {
@@ -10908,6 +10916,10 @@
   {
     "type": "filetype",
     "named": true
+  },
+  {
+    "type": "filetype",
+    "named": false
   },
   {
     "type": "finally",
