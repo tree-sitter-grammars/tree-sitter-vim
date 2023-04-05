@@ -14,7 +14,6 @@ module.exports = {
         "color",
         "command",
         "compiler",
-        "cscope",
         "dir",
         "environment",
         "even",
