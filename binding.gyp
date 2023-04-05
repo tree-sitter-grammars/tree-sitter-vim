@@ -1,14 +1,15 @@
 {
   "targets": [
     {
-      "target_name": "tree_sitter_VimL_binding",
+      "target_name": "tree_sitter_vim_binding",
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "src"
       ],
       "sources": [
+        "bindings/node/binding.cc",
         "src/parser.c",
-        "bindings/node/binding.cc"
+        "src/scanner.c",
       ],
       "cflags_c": [
         "-std=c99",
