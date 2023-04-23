@@ -273,6 +273,8 @@
 
 (ternary_expression ["?" ":"] @conditional.ternary)
 
+(falsy_expression "??" @conditional)
+
 ; Options
 ((set_value) @number
  (#match? @number "^[0-9]+(\.[0-9]+)?$"))
