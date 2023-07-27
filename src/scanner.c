@@ -115,10 +115,10 @@ static void skip_space_tabs(TSLexer *lexer) {
   }
 }
 
-static bool check_prefix(TSLexer *lexer, char *preffix, unsigned int preffix_len,
+static bool check_prefix(TSLexer *lexer, char *prefix, unsigned int prefix_len,
                   enum TokenType token) {
-  for (unsigned int i = 0; i < preffix_len; i++) {
-    if (lexer->lookahead == preffix[i]) {
+  for (unsigned int i = 0; i < prefix_len; i++) {
+    if (lexer->lookahead == prefix[i]) {
       advance(lexer, false);
     } else {
       return false;
