@@ -109,13 +109,13 @@ void tree_sitter_vim_external_scanner_deserialize(void *payload,
 
 static void advance(TSLexer *lexer, bool skip) { lexer->advance(lexer, skip); }
 
-void skip_space_tabs(TSLexer *lexer) {
+static void skip_space_tabs(TSLexer *lexer) {
   while (IS_SPACE_TABS(lexer->lookahead)) {
     advance(lexer, true);
   }
 }
 
-bool check_prefix(TSLexer *lexer, char *preffix, unsigned int preffix_len,
+static bool check_prefix(TSLexer *lexer, char *preffix, unsigned int preffix_len,
                   enum TokenType token) {
   for (unsigned int i = 0; i < preffix_len; i++) {
     if (lexer->lookahead == preffix[i]) {
@@ -129,7 +129,7 @@ bool check_prefix(TSLexer *lexer, char *preffix, unsigned int preffix_len,
   return true;
 }
 
-bool try_lex_heredoc_marker(Scanner *scanner, TSLexer *lexer, const bool is_let_heredoc)
+static bool try_lex_heredoc_marker(Scanner *scanner, TSLexer *lexer, const bool is_let_heredoc)
 {
   char marker[UINT8_MAX] = { '\0' };
   uint16_t marker_len = 0;
@@ -157,11 +157,11 @@ bool try_lex_heredoc_marker(Scanner *scanner, TSLexer *lexer, const bool is_let_
   return true;
 }
 
-bool is_valid_string_delim(char c) {
+static bool is_valid_string_delim(char c) {
   return c == '\'' || c == '"';
 }
 
-bool lex_literal_string(TSLexer *lexer) {
+static bool lex_literal_string(TSLexer *lexer) {
   while (true) {
     if(lexer->lookahead == '\'') {
       // Maybe end of string, but not sure, it could be double quote
@@ -191,7 +191,7 @@ bool lex_literal_string(TSLexer *lexer) {
 }
 
 // FIXME: this does not support comments like `" Hello "mister" how are you ?`
-bool lex_escapable_string(TSLexer *lexer) {
+static bool lex_escapable_string(TSLexer *lexer) {
   while (true) {
     if (lexer->lookahead == '\\') {
       advance(lexer, false);
@@ -220,7 +220,7 @@ bool lex_escapable_string(TSLexer *lexer) {
   }
 }
 
-bool lex_string(TSLexer *lexer) {
+static bool lex_string(TSLexer *lexer) {
   char string_delim;
 
   if (!is_valid_string_delim(lexer->lookahead)) {
@@ -240,7 +240,7 @@ bool lex_string(TSLexer *lexer) {
   }
 }
 
-bool try_lex_keyword(char *possible, keyword keyword) {
+static bool try_lex_keyword(char *possible, keyword keyword) {
   if (strlen(possible) > strlen(keyword.mandat) + strlen(keyword.opt)) {
     return false;
   }
@@ -268,7 +268,7 @@ bool try_lex_keyword(char *possible, keyword keyword) {
   return true;
 }
 
-bool scope_correct(TSLexer *lexer) {
+static bool scope_correct(TSLexer *lexer) {
   const char *SCOPES = "lbstvwg<";
   for (size_t i = 0; SCOPES[i]; i++) {
     if (lexer->lookahead == SCOPES[i]) {
@@ -279,7 +279,7 @@ bool scope_correct(TSLexer *lexer) {
   return false;
 }
 
-bool lex_scope(TSLexer *lexer) {
+static bool lex_scope(TSLexer *lexer) {
   if (!scope_correct(lexer)) {
     return false;
   }
