@@ -31,7 +31,7 @@ source <afile>
 
 (script_file
   (source_statement
-    (filename)))
+    file: (builtin_reference)))
 
 ================================================================================
 Source banged

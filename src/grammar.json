@@ -1654,8 +1654,17 @@
               "type": "FIELD",
               "name": "file",
               "content": {
-                "type": "SYMBOL",
-                "name": "filename"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "filename"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "builtin_reference"
+                  }
+                ]
               }
             },
             {
@@ -8041,7 +8050,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[</._+,#$%~=-]"
+              "value": "[/._+,#$%~=-]"
             },
             {
               "type": "PATTERN",
@@ -8082,7 +8091,7 @@
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[>/._+,#$%~=-]"
+                  "value": "[/._+,#$%~=-]"
                 }
               },
               {
@@ -8117,6 +8126,26 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "builtin_reference": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "PATTERN",
+            "value": "[A-Za-z]"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ">"
         }
       ]
     },

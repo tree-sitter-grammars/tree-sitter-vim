@@ -272,7 +272,11 @@ module.exports = grammar({
       ),
 
     source_statement: ($) =>
-      bang_range_command($, "source", optional(field("file", $.filename))),
+      bang_range_command(
+        $,
+        "source",
+        optional(field("file", choice($.filename, $.builtin_reference)))
+      ),
 
     global_statement: ($) =>
       bang_range_command(
@@ -1084,7 +1088,7 @@ module.exports = grammar({
         // First character of a filename is not immediate
         choice(
           /[A-Za-z0-9]/,
-          /[</._+,#$%~=-]/,
+          /[/._+,#$%~=-]/,
           // Include windows characters
           /[\\{}\[\]:@!]/,
           // Allow wildcard
@@ -1096,7 +1100,7 @@ module.exports = grammar({
           choice(
             ...[
               /[A-Za-z0-9]/,
-              /[>/._+,#$%~=-]/,
+              /[/._+,#$%~=-]/,
               // Include windows characters
               /[\\{}\[\]:@!]/,
               // Allow wildcard
@@ -1107,6 +1111,8 @@ module.exports = grammar({
           )
         )
       ),
+
+    builtin_reference: ($) => seq("<", repeat(/[A-Za-z]/), ">"),
 
     // :h pattern
     pattern_multi: ($) =>
