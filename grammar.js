@@ -1084,7 +1084,7 @@ module.exports = grammar({
         // First character of a filename is not immediate
         choice(
           /[A-Za-z0-9]/,
-          /[/._+,#$%~=-]/,
+          /[</._+,#$%~=-]/,
           // Include windows characters
           /[\\{}\[\]:@!]/,
           // Allow wildcard
@@ -1096,7 +1096,7 @@ module.exports = grammar({
           choice(
             ...[
               /[A-Za-z0-9]/,
-              /[/._+,#$%~=-]/,
+              /[>/._+,#$%~=-]/,
               // Include windows characters
               /[\\{}\[\]:@!]/,
               // Allow wildcard

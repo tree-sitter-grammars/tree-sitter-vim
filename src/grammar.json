@@ -8041,7 +8041,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "[/._+,#$%~=-]"
+              "value": "[</._+,#$%~=-]"
             },
             {
               "type": "PATTERN",
@@ -8082,7 +8082,7 @@
                 "type": "IMMEDIATE_TOKEN",
                 "content": {
                   "type": "PATTERN",
-                  "value": "[/._+,#$%~=-]"
+                  "value": "[>/._+,#$%~=-]"
                 }
               },
               {
