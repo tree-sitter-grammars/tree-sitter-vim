@@ -1978,6 +1978,11 @@
     "fields": {}
   },
   {
+    "type": "builtin_reference",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "call_expression",
     "named": true,
     "fields": {
@@ -8240,6 +8245,10 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "builtin_reference",
+            "named": true
+          },
           {
             "type": "filename",
             "named": true
