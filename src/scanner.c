@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
-#include <tree_sitter/parser.h>
+#include "tree_sitter/parser.h"
 #include <string.h>
 #include <wctype.h>
 #include <assert.h>
