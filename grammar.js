@@ -83,15 +83,16 @@ const ENCODING = [
 ];
 
 const PREC = {
-  TERNARY: 1, //=> expr ? expr : expr
-  OR: 2, //=> or
-  AND: 3, //=> and
-  COMPARE: 4, //=> < <= == ~= >= > and all
-  PLUS: 5, //=> + -
-  CONCAT: 5, //=> .. .
-  MULTI: 6, //=> * / %
-  UNARY: 7, //=> ! - +
-  CALL: 8, //expr[n] expr[n:m] expr.name expr(...)
+  FALSY: 1, //=> expr ?? expr
+  TERNARY: 2, //=> expr ? expr : expr
+  OR: 3, //=> or
+  AND: 4, //=> and
+  COMPARE: 5, //=> < <= == ~= >= > and all
+  PLUS: 6, //=> + -
+  CONCAT: 6, //=> .. .
+  MULTI: 7, //=> * / %
+  UNARY: 8, //=> ! - +
+  CALL: 9, //expr[n] expr[n:m] expr.name expr(...)
 };
 
 module.exports = grammar({
@@ -924,6 +925,7 @@ module.exports = grammar({
       choice(
         $._variable,
         $.ternary_expression,
+        $.falsy_expression,
         $.index_expression,
         $.slice_expression,
         $.binary_operation,
@@ -944,6 +946,12 @@ module.exports = grammar({
           ":",
           field("right", $._expression)
         )
+      ),
+
+    falsy_expression: ($) =>
+      prec.left(
+        PREC.FALSY,
+        seq(field("left", $._expression), "??", field("right", $._expression))
       ),
 
     // Shamelessly stolen from tree-sitter-lua
