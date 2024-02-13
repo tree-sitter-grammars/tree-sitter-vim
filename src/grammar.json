@@ -4972,14 +4972,14 @@
           "type": "IMMEDIATE_TOKEN",
           "content": {
             "type": "PATTERN",
-            "value": "([SsCc]-)?[Ll][eE][fF][tT][Mm][oO][uU][sS][eE]"
+            "value": "([234]-)?([AaSsCc]-)?[Ll][eE][fF][tT][Mm][oO][uU][sS][eE]"
           }
         },
         {
           "type": "IMMEDIATE_TOKEN",
           "content": {
             "type": "PATTERN",
-            "value": "([SsCc]-)?[Rr][iI][gG][hH][tT][Mm][oO][uU][sS][eE]"
+            "value": "([234]-)?([AaSsCc]-)?[Rr][iI][gG][hH][tT][Mm][oO][uU][sS][eE]"
           }
         },
         {
@@ -14123,4 +14123,3 @@
   "inline": [],
   "supertypes": []
 }
-

@@ -751,8 +751,8 @@ module.exports = grammar({
           /([kK]|([SsCc]-))?[Dd][oO][wW][nN]/, // [k|S-|C-]Down
           /([kK]|([SsCc]-))?[Ll][eE][fF][tT]/, // [k|S-|C-]Left
           /([kK]|([SsCc]-))?[Rr][iI][gG][hH][tT]/, // [k|S-|C-]Right
-          /([SsCc]-)?[Ll][eE][fF][tT][Mm][oO][uU][sS][eE]/, // <S|C>-LeftMouse
-          /([SsCc]-)?[Rr][iI][gG][hH][tT][Mm][oO][uU][sS][eE]/, // <S|C>-RightMouse
+          /([234]-)?([AaSsCc]-)?[Ll][eE][fF][tT][Mm][oO][uU][sS][eE]/, // <S|C|A>-LeftMouse
+          /([234]-)?([AaSsCc]-)?[Rr][iI][gG][hH][tT][Mm][oO][uU][sS][eE]/, // <S|C|A>-RightMouse
           /([Ss]-)?[Ff][0-9]{1,2}/, // [S-]F<1-12>
           /[Hh][eE][lL][pP]/, // Help
           /[Uu][nN][dD][oO]/, // Undo
