@@ -13665,10 +13665,6 @@
       "field_expression"
     ],
     [
-      "list",
-      "_pattern_atom"
-    ],
-    [
       "_ident",
       "lambda_expression"
     ],

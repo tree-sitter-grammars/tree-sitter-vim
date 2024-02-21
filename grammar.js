@@ -102,7 +102,6 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.binary_operation, $.unary_operation, $.field_expression],
     [$.binary_operation, $.field_expression],
-    [$.list, $._pattern_atom],
     [$._ident, $.lambda_expression],
     [$._ident, $._immediate_lambda_expression],
   ],
