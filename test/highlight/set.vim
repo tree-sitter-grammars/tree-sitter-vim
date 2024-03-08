@@ -1,26 +1,21 @@
 set hls!
-" <- keyword
-"   ^^^ variable.builtin
-"      ^ operator
+" <- @keyword
+"   ^^^ @variable.builtin
+"      ^ @operator
 
 set hls?
-" <- keyword
-"   ^^^ variable.builtin
-"      ^ operator
+" <- @keyword
+"   ^^^ @variable.builtin
+"      ^ @operator
 
 setlocal hls&
-" <- keyword
-"        ^^^ variable.builtin
-"           ^ operator
+" <- @keyword
+"        ^^^ @variable.builtin
+"           ^ @operator
 
 set laststatus=0
-" <- keyword
-"   ^^^^^^^^^^ variable.builtin
-"             ^ operator
-"              ^ number
+" <- @keyword
+"   ^^^^^^^^^^ @variable.builtin
+"             ^ @operator
 
-set omnifunc=v:lua.vim.lsp.omnifunc
-" <- keyword
-"   ^^^^^^^^ variable.builtin
-"           ^ operator
-"            ^^^^^^^^^^^^^^^^^^^^^^ function
+" set omnifunc=v:lua.vim.lsp.omnifunc

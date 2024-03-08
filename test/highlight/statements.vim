@@ -1,25 +1,23 @@
-" Last Change: 2022 Aug 23
-
 let a = "foo"
-" <- keyword
-"   ^ variable
-"         ^ string
+" <- @keyword
+"   ^ @variable
+"         ^ @string
 
 
 let a{b + 10} = a:bar
-"       ^ operator
-"         ^ number
-"               ^ namespace
+"       ^ @operator
+"         ^ @number
+"               ^ @module
 
 cnext
-" <- keyword
+" <- @keyword
 
 cNext
-" <- keyword
+" <- @keyword
 
 cprevious
-" <- keyword
+" <- @keyword
 
 
 unknowncommand
-" <- keyword
+" <- @keyword

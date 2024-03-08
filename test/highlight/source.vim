@@ -1,10 +1,8 @@
-" Last Change: 2022 Sep 27
-
 source path/to/file
-" <- keyword
-"      ^ string
+" <- @keyword
+"      ^ @string.special.path
 
 source! path/to/file
-" <- keyword
-"     ^ punctuation.special
-"       ^ string
+" <- @keyword
+"     ^ @punctuation.special
+"       ^ @string.special.path

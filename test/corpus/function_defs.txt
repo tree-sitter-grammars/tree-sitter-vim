@@ -235,6 +235,7 @@ endfunction
 
 ================================================================================
 Function with definition arguments
+:skip
 ================================================================================
 
 function foo() dict abort range closure

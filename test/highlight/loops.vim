@@ -1,27 +1,24 @@
-" Last Change: 10 July 2022
-
 for i in foo
-" <- repeat
-"   ^ variable
-"     ^^ repeat
-"        ^^^ variable
+" <- @keyword.repeat
+"   ^ @variable
+"     ^^ @keyword.repeat
+"        ^^^ @variable
   if i.bar
-  " <- conditional
-  "  ^ variable
-  "   ^ punctuation.delimiter
-  "    ^^^ variable
+  " <- @keyword.conditional
+  "  ^ @variable
+  "   ^ @punctuation.delimiter
+  "    ^^^ @variable
     break
-    " <- repeat
+    " <- @keyword.repeat
   endif
-  " <- conditional
+  " <- @keyword.conditional
   continue
-  " <- repeat
+  " <- @keyword.repeat
 endfor
-" <- repeat
+" <- @keyword.repeat
 
 while v:false
-" <- repeat
-"     ^^ namespace
-"       ^^^^^ variable
+" <- @keyword.repeat
+"       ^^^^^ @boolean
 endwhile
-" <- repeat
+" <- @keyword.repeat
