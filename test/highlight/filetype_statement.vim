@@ -1,18 +1,18 @@
 filetype
-" <- keyword
+" <- @keyword
 
 filetype on
-" <- keyword
-"        ^ keyword
+" <- @keyword
+"        ^ @keyword
 
 filet detect
-" <- keyword
-"     ^ keyword
+" <- @keyword
+"     ^ @keyword
 
 filet plugin off
-" <- keyword
-"     ^ keyword
+" <- @keyword
+"     ^ @keyword
 
 filet indent off
-" <- keyword
-"     ^ keyword
+" <- @keyword
+"     ^ @keyword

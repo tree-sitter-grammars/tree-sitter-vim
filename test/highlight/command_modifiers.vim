@@ -1,24 +1,22 @@
-" Last Change: 2022 Aug 23
-
 vertical echo "foo"
-" <- keyword
-"        ^ keyword
-"              ^ string
+" <- @keyword
+"        ^ @keyword
+"              ^ @string
 
 leftabove echo "foo"
-" <- keyword
+" <- @keyword
 
 aboveleft echo "foo"
-" <- keyword
+" <- @keyword
 
 rightbelow echo "foo"
-" <- keyword
+" <- @keyword
 
 belowright echo "foo"
-" <- keyword
+" <- @keyword
 
 topleft echo "foo"
-" <- keyword
+" <- @keyword
 
 botright echo "foo"
-" <- keyword
+" <- @keyword

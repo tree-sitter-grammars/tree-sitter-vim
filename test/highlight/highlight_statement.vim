@@ -1,44 +1,44 @@
 highlight
-" <- keyword
+" <- @keyword
 
 hi HiGroup
-" <- keyword
-"     ^ type
+" <- @keyword
+"     ^ @type
 
 hi clear
-" <- keyword
-"     ^ keyword
+" <- @keyword
+"     ^ @keyword
 
 hi clear HiGroup
-" <- keyword
-"     ^ keyword
-"         ^ type
+" <- @keyword
+"     ^ @keyword
+"         ^ @type
 
 hi HiGroup NONE
-" <- keyword
-"     ^ type
-"           ^ type
+" <- @keyword
+"     ^ @type
+"           ^ @type
 "
 hi link first Second
-" <- keyword
-"   ^ keyword
-"         ^ type
-"               ^ type
+" <- @keyword
+"   ^ @keyword
+"         ^ @type
+"               ^ @type
 
 hi default debugBreakpoint term=reverse ctermbg=red guibg=red
-" <- keyword
-"     ^ keyword
-"             ^ type
-"                           ^ property
-"                                   ^ constant
-"                                           ^ property
-"                                                 ^ constant
-"                                                     ^ property
-"                                                           ^ constant
+" <- @keyword
+"     ^ @keyword
+"             ^ @type
+"                           ^ @property
+"                                   ^ @constant
+"                                           ^ @property
+"                                                 ^ @constant
+"                                                     ^ @property
+"                                                           ^ @constant
 
 hi default link HiGroup AnotherOne
-" <- keyword
-"     ^ keyword
-"             ^ keyword
-"                 ^ type
-"                         ^ type
+" <- @keyword
+"     ^ @keyword
+"             ^ @keyword
+"                 ^ @type
+"                         ^ @type
