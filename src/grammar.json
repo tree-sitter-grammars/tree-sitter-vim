@@ -336,6 +336,19 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "FIELD",
+          "name": "range",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_range"
+            },
+            "named": true,
+            "value": "range"
+          }
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -3895,6 +3908,19 @@
     "user_command": {
       "type": "SEQ",
       "members": [
+        {
+          "type": "FIELD",
+          "name": "range",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_range"
+            },
+            "named": true,
+            "value": "range"
+          }
+        },
         {
           "type": "SEQ",
           "members": [
@@ -14119,3 +14145,4 @@
   "inline": [],
   "supertypes": []
 }
+
