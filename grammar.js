@@ -15,7 +15,7 @@ const MAP_OPTIONS = any_order(
   "<nowait>",
   "<silent>",
   "<unique>",
-  "<script>"
+  "<script>",
 );
 
 const FILE_FORMAT = ["dos", "unix", "mac"];
@@ -104,7 +104,7 @@ module.exports = grammar({
     [$.binary_operation, $.field_expression],
     [$._ident, $.lambda_expression],
     [$._ident, $._immediate_lambda_expression],
-    [$._complete_range_marker,$._range_marker],
+    [$._complete_range_marker, $._range_marker],
   ],
 
   externals: ($) =>
@@ -205,15 +205,15 @@ module.exports = grammar({
           $.visual_statement,
           $.view_statement,
           $.eval_statement,
-          $.user_command
-        )
+          $.user_command,
+        ),
       ),
 
     unknown_builtin_statement: ($) =>
       seq(
         optional(field("range", alias($._complete_range, $.range))),
         maybe_bang($, $.unknown_command_name),
-        alias(repeat($.command_argument), $.arguments)
+        alias(repeat($.command_argument), $.arguments),
       ),
 
     return_statement: ($) => command($, "return", optional($._expression)),
@@ -235,7 +235,7 @@ module.exports = grammar({
         $,
         "setfiletype",
         optional(alias("FALLBACK", $.fallback)),
-        $.filetypes
+        $.filetypes,
       ),
     options_statement: ($) =>
       choice(command($, "browse", keyword($, "set")), command($, "options")),
@@ -262,14 +262,14 @@ module.exports = grammar({
       seq(
         maybe_bang($, keyword($, "runtime")),
         optional(alias($._runtime_where, $.where)),
-        alias(repeat1($.filename), $.filenames)
+        alias(repeat1($.filename), $.filenames),
       ),
 
     wincmd_statement: ($) =>
       seq(
         optional($.integer_literal),
         keyword($, "wincmd"),
-        field("action", /[a-zA-Z=<>]/)
+        field("action", /[a-zA-Z=<>]/),
       ),
 
     source_statement: ($) =>
@@ -282,7 +282,7 @@ module.exports = grammar({
         $._separator_first,
         $.pattern,
         $._separator,
-        $._statement
+        $._statement,
       ),
 
     _filetype_state: ($) => choice("on", "off"),
@@ -301,9 +301,9 @@ module.exports = grammar({
             $._filetype_enable,
             $._filetype_detect,
             $._filetype_plugin,
-            $._filetype_indent
-          )
-        )
+            $._filetype_indent,
+          ),
+        ),
       ),
 
     colorscheme_statement: ($) =>
@@ -323,7 +323,7 @@ module.exports = grammar({
         "<<",
         choice(alias($._script_heredoc_marker, $.marker_definition), "\n"),
         alias(repeat($._heredoc_line), $.body),
-        alias($._heredoc_end, $.endmarker)
+        alias($._heredoc_end, $.endmarker),
       ),
 
     for_loop: ($) =>
@@ -334,7 +334,7 @@ module.exports = grammar({
         field("iter", $._expression),
         $._cmd_separator,
         alias(optional($._separated_statements), $.body),
-        keyword($, "endfor")
+        keyword($, "endfor"),
       ),
 
     while_loop: ($) =>
@@ -343,7 +343,7 @@ module.exports = grammar({
         field("condition", $._expression),
         $._cmd_separator,
         alias(optional($._separated_statements), $.body),
-        keyword($, "endwhile")
+        keyword($, "endwhile"),
       ),
 
     if_statement: ($) =>
@@ -354,7 +354,7 @@ module.exports = grammar({
         alias(optional($._separated_statements), $.body),
         repeat($.elseif_statement),
         optional($.else_statement),
-        keyword($, "endif")
+        keyword($, "endif"),
       ),
 
     elseif_statement: ($) =>
@@ -362,7 +362,7 @@ module.exports = grammar({
         keyword($, "elseif"),
         field("condition", $._expression),
         $._cmd_separator,
-        alias(optional($._separated_statements), $.body)
+        alias(optional($._separated_statements), $.body),
       ),
 
     else_statement: ($) =>
@@ -375,7 +375,7 @@ module.exports = grammar({
         alias(optional($._separated_statements), $.body),
         repeat($.catch_statement),
         optional($.finally_statement),
-        keyword($, "endtry")
+        keyword($, "endtry"),
       ),
 
     _au_pattern: ($) => choice(/\/.*\//, /\?.*\?/),
@@ -385,13 +385,13 @@ module.exports = grammar({
         keyword($, "catch"),
         optional(alias($._au_pattern, $.pattern)),
         $._cmd_separator,
-        alias(optional($._separated_statements), $.body)
+        alias(optional($._separated_statements), $.body),
       ),
 
     finally_statement: ($) =>
       seq(
         keyword($, "finally"),
-        alias(optional($._separated_statements), $.body)
+        alias(optional($._separated_statements), $.body),
       ),
 
     throw_statement: ($) => command($, "throw", $._expression),
@@ -402,21 +402,21 @@ module.exports = grammar({
       choice(
         seq(
           choice(/\S/, seq("\\", /./)),
-          repeat(choice(...[/\S/, seq("\\", /./)].map(token.immediate)))
+          repeat(choice(...[/\S/, seq("\\", /./)].map(token.immediate))),
         ),
-        $.string_literal
+        $.string_literal,
       ),
     _bang_filter_command: ($) =>
       seq(
         field("filter", alias($.filename, $.filter_command)),
         optional($.bang),
-        repeat(alias($._bang_filter_command_argument, $.command_argument))
+        repeat(alias($._bang_filter_command_argument, $.command_argument)),
       ),
     bang_filter_statement: ($) =>
       seq(
         field("range", alias($._range, $.range)),
         alias($._bang_filter_bangs, $.bangs),
-        alias($._bang_filter_command, $.command)
+        alias($._bang_filter_command, $.command),
       ),
 
     // TODO(vigoux): maybe we should find some names here
@@ -427,8 +427,8 @@ module.exports = grammar({
         "a:",
         choice(
           alias(token.immediate(/[a-zA-Z_](\w|#)*/), $.identifier),
-          alias(token.immediate(/[0-9]+/), $.integer_literal)
-        )
+          alias(token.immediate(/[0-9]+/), $.integer_literal),
+        ),
       ),
 
     _curly_braces_name_expression: ($) => seq("{", $._expression, "}"),
@@ -438,33 +438,33 @@ module.exports = grammar({
       seq(
         choice(
           /[a-zA-Z_]+/,
-          alias($._curly_braces_name_expression, $.curly_braces_name)
+          alias($._curly_braces_name_expression, $.curly_braces_name),
         ),
         repeat(
           choice(
             token.immediate(/(\w|#)+/),
             alias(
               $._immediate_curly_braces_name_expression,
-              $.curly_braces_name
-            )
-          )
-        )
+              $.curly_braces_name,
+            ),
+          ),
+        ),
       ),
     _immediate_identifier: ($) =>
       seq(
         choice(
           token.immediate(/[a-zA-Z_]+/),
-          alias($._immediate_curly_braces_name_expression, $.curly_braces_name)
+          alias($._immediate_curly_braces_name_expression, $.curly_braces_name),
         ),
         repeat(
           choice(
             token.immediate(/(\w|#)+/),
             alias(
               $._immediate_curly_braces_name_expression,
-              $.curly_braces_name
-            )
-          )
-        )
+              $.curly_braces_name,
+            ),
+          ),
+        ),
       ),
     _ident: ($) =>
       prec.dynamic(1, choice($.scoped_identifier, $.identifier, $.argument)),
@@ -484,29 +484,29 @@ module.exports = grammar({
           $.option,
           $.index_expression,
           $.field_expression,
-          $.list_assignment
+          $.list_assignment,
         ),
         choice(
           seq($._let_operator, $._expression),
-          alias($._let_heredoc, $.heredoc)
-        )
+          alias($._let_heredoc, $.heredoc),
+        ),
       ),
     let_statement: ($) =>
       seq(
         keyword($, "let"),
-        choice($._let_assignment, repeat($._assignment_variable))
+        choice($._let_assignment, repeat($._assignment_variable)),
       ),
 
     _const_assignment: ($) =>
       seq(
         choice($._ident, $.list_assignment),
-        choice(seq("=", $._expression), alias($._let_heredoc, $.heredoc))
+        choice(seq("=", $._expression), alias($._let_heredoc, $.heredoc)),
       ),
     const_statement: ($) =>
       command(
         $,
         "const",
-        choice($._const_assignment, repeat($._assignment_variable))
+        choice($._const_assignment, repeat($._assignment_variable)),
       ),
 
     _let_heredoc: ($) =>
@@ -517,7 +517,7 @@ module.exports = grammar({
         optional($.comment),
         "\n",
         alias(repeat($._heredoc_line), $.body),
-        alias($._heredoc_end, $.endmarker)
+        alias($._heredoc_end, $.endmarker),
       ),
 
     // :h :let-heredoc
@@ -530,7 +530,7 @@ module.exports = grammar({
     inv_option: ($) =>
       choice(
         seq($._inv, $.option_name),
-        seq($.option_name, token.immediate("!"))
+        seq($.option_name, token.immediate("!")),
       ),
 
     default_option: ($) =>
@@ -544,7 +544,7 @@ module.exports = grammar({
         seq($.option_name, "?"),
         $.no_option,
         $.inv_option,
-        $.default_option
+        $.default_option,
       ),
 
     _set_operator: ($) =>
@@ -582,20 +582,20 @@ module.exports = grammar({
     aboveleft_statement: ($) =>
       seq(
         choice(keyword($, "leftabove"), keyword($, "aboveleft")),
-        $._statement
+        $._statement,
       ),
 
     belowright_statement: ($) =>
       seq(
         choice(keyword($, "rightbelow"), keyword($, "belowright")),
-        $._statement
+        $._statement,
       ),
 
     user_command: ($) =>
       seq(
         optional(field("range", alias($._complete_range, $.range))),
         maybe_bang($, $.command_name),
-        alias(repeat($.command_argument), $.arguments)
+        alias(repeat($.command_argument), $.arguments),
       ),
 
     command_argument: ($) => choice($.string_literal, /\S+/),
@@ -607,7 +607,7 @@ module.exports = grammar({
         any_order("dict", "range", "abort", "closure"),
         $._cmd_separator,
         alias(optional($._separated_statements), $.body),
-        keyword($, "endfunction")
+        keyword($, "endfunction"),
       ),
 
     function_declaration: ($) =>
@@ -615,8 +615,8 @@ module.exports = grammar({
         PREC.CALL,
         seq(
           field("name", choice($._ident, $.field_expression)),
-          field("parameters", $.parameters)
-        )
+          field("parameters", $.parameters),
+        ),
       ),
 
     parameters: ($) =>
@@ -628,10 +628,10 @@ module.exports = grammar({
           seq(
             commaSep($.identifier),
             optional(seq(",", commaSep($.default_parameter))),
-            optional(seq(",", $.spread))
-          )
+            optional(seq(",", $.spread)),
+          ),
         ),
-        ")"
+        ")",
       ),
 
     default_parameter: ($) =>
@@ -657,7 +657,7 @@ module.exports = grammar({
     _range_explicit: ($) =>
       seq(
         field("start", $._range_marker),
-        optional(seq(choice(",", ";"), field("end", $._range_marker)))
+        optional(seq(choice(",", ";"), field("end", $._range_marker))),
       ),
 
     _range_marker: ($) =>
@@ -669,14 +669,15 @@ module.exports = grammar({
         seq("/", $.pattern, optional(token.immediate("/"))),
         seq("?", $.pattern, optional(token.immediate("?"))),
         $.previous_pattern,
-        $.mark
+        $.mark,
       ),
-    _complete_range: ($) => choice(alias("%", $.file), $._complete_range_explicit),
+    _complete_range: ($) =>
+      choice(alias("%", $.file), $._complete_range_explicit),
 
     _complete_range_explicit: ($) =>
       seq(
         field("start", $._complete_range_marker),
-        optional(seq(choice(",", ";"), field("end", $._complete_range_marker)))
+        optional(seq(choice(",", ";"), field("end", $._complete_range_marker))),
       ),
 
     _complete_range_marker: ($) =>
@@ -688,7 +689,7 @@ module.exports = grammar({
         seq("/", $.pattern, token.immediate("/")),
         seq("?", $.pattern, token.immediate("?")),
         $.previous_pattern,
-        $.mark
+        $.mark,
       ),
 
     current_line: ($) => ".",
@@ -725,11 +726,11 @@ module.exports = grammar({
               "lnoremap",
               "cnoremap",
               "tnoremap",
-            ].map((name) => keyword($, name))
-          )
+            ].map((name) => keyword($, name)),
+          ),
         ),
         MAP_OPTIONS,
-        $._map_definition
+        $._map_definition,
       ),
 
     _map_definition: ($) =>
@@ -738,12 +739,12 @@ module.exports = grammar({
           "<expr>",
           MAP_OPTIONS,
           field("lhs", alias($._map_lhs, $.map_side)),
-          field("rhs", $._expression)
+          field("rhs", $._expression),
         ),
         seq(
           field("lhs", alias($._map_lhs, $.map_side)),
-          field("rhs", alias($._map_rhs, $.map_side))
-        )
+          field("rhs", alias($._map_rhs, $.map_side)),
+        ),
       ),
 
     // All keycodes should be match case insensitively (this makes it awful to read)
@@ -795,7 +796,7 @@ module.exports = grammar({
           /[Pp][lL][uU][gG]/, // Plug
           /([Ss]-)?[Cc][hH][aA][rR]-(0[0-7]+|0[xX][0-9a-fA-F]+|[0-9]+)+/, // [S-]Char-...
         ].map(token.immediate),
-        seq($._keycode_modifier, choice(token.immediate(/\S/), $._keycode_in)) // (<S|C|M|A|D|Alt>-)+...
+        seq($._keycode_modifier, choice(token.immediate(/\S/), $._keycode_in)), // (<S|C|M|A|D|Alt>-)+...
       ),
     _immediate_keycode: ($) =>
       seq(token.immediate("<"), $._keycode_in, token.immediate(">")),
@@ -807,7 +808,7 @@ module.exports = grammar({
         alias(/<[Cc][Mm][Dd]>/, $.keycode),
         // :h map_bar
         sep1($._statement, choice("\\|", alias(/<[Bb][Aa][Rr]>/, $.keycode))),
-        alias(/<[Cc][Rr]>/, $.keycode)
+        alias(/<[Cc][Rr]>/, $.keycode),
       ),
     _map_rhs: ($) => choice(keys($, /[^\s|]/, /[^|\n]/), $._map_rhs_statement),
 
@@ -823,14 +824,14 @@ module.exports = grammar({
         key_val_arg("numhl", optional($.hl_group)),
         key_val_arg("text", optional(alias($._sign_define_arg_text, $.text))),
         key_val_arg("texthl", optional($.hl_group)),
-        key_val_arg("culhl", optional($.hl_group))
+        key_val_arg("culhl", optional($.hl_group)),
       ),
 
     _sign_define: ($) =>
       sub_cmd(
         "define",
         field("name", $._sign_name),
-        repeat(alias($._sign_define_argument, $.sign_argument))
+        repeat(alias($._sign_define_argument, $.sign_argument)),
       ),
 
     _sign_undefine: ($) => sub_cmd("undefine", field("name", $._sign_name)),
@@ -845,12 +846,12 @@ module.exports = grammar({
         key_val_arg("buffer", $.integer_literal),
         key_val_arg("group", $.hl_group),
         key_val_arg("priority", $.integer_literal),
-        key_val_arg("file", $.filename)
+        key_val_arg("file", $.filename),
       ),
     _sign_place_place: ($) =>
       seq(
         field("id", $.integer_literal),
-        repeat1(alias($._sign_place_place_argument, $.sign_argument))
+        repeat1(alias($._sign_place_place_argument, $.sign_argument)),
       ),
     // :h sign-place-list
     _sign_place_list_argument: ($) =>
@@ -859,8 +860,8 @@ module.exports = grammar({
         key_val_arg("buffer", $.integer_literal),
         key_val_arg(
           "group",
-          choice($.hl_group, alias(token.immediate("*"), $.wildcard))
-        )
+          choice($.hl_group, alias(token.immediate("*"), $.wildcard)),
+        ),
       ),
     _sign_place_list: ($) =>
       repeat1(alias($._sign_place_list_argument, $.sign_argument)),
@@ -870,7 +871,7 @@ module.exports = grammar({
     _sign_unplace_cursor_argument: ($) =>
       key_val_arg(
         "group",
-        choice($.hl_group, alias(token.immediate("*"), $.wildcard))
+        choice($.hl_group, alias(token.immediate("*"), $.wildcard)),
       ),
     _sign_unplace_cursor: ($) =>
       alias($._sign_unplace_cursor_argument, $.sign_argument),
@@ -880,31 +881,31 @@ module.exports = grammar({
         key_val_arg("buffer", $.integer_literal),
         key_val_arg(
           "group",
-          choice($.hl_group, alias(token.immediate("*"), $.wildcard))
-        )
+          choice($.hl_group, alias(token.immediate("*"), $.wildcard)),
+        ),
       ),
     _sign_unplace_id: ($) =>
       seq(
         field("id", choice($.integer_literal, alias("*", $.wildcard))),
-        repeat(alias($._sign_unplace_id_argument, $.sign_argument))
+        repeat(alias($._sign_unplace_id_argument, $.sign_argument)),
       ),
     _sign_unplace: ($) =>
       sub_cmd(
         "unplace",
-        optional(choice($._sign_unplace_cursor, $._sign_unplace_id))
+        optional(choice($._sign_unplace_cursor, $._sign_unplace_id)),
       ),
 
     _sign_jump_argument: ($) =>
       choice(
         key_val_arg("file", $.filename),
         key_val_arg("buffer", $.integer_literal),
-        key_val_arg("group", $.hl_group)
+        key_val_arg("group", $.hl_group),
       ),
     _sign_jump: ($) =>
       sub_cmd(
         "jump",
         field("id", choice($.integer_literal, alias("*", $.wildcard))),
-        repeat(alias($._sign_jump_argument, $.sign_argument))
+        repeat(alias($._sign_jump_argument, $.sign_argument)),
       ),
 
     sign_statement: ($) =>
@@ -916,8 +917,8 @@ module.exports = grammar({
           $._sign_list,
           $._sign_place,
           $._sign_unplace,
-          $._sign_jump
-        )
+          $._sign_jump,
+        ),
       ),
 
     // :h variable
@@ -936,8 +937,8 @@ module.exports = grammar({
           $.option,
           $.lambda_expression,
           $.dictionnary,
-          $.literal_dictionary
-        )
+          $.literal_dictionary,
+        ),
       ),
 
     //:h expression-syntax
@@ -952,7 +953,7 @@ module.exports = grammar({
         $.unary_operation,
         $.field_expression,
         $.call_expression,
-        $.method_expression
+        $.method_expression,
       ),
 
     ternary_expression: ($) =>
@@ -963,8 +964,8 @@ module.exports = grammar({
           "?",
           field("left", $._expression),
           ":",
-          field("right", $._expression)
-        )
+          field("right", $._expression),
+        ),
       ),
 
     // Shamelessly stolen from tree-sitter-lua
@@ -985,8 +986,8 @@ module.exports = grammar({
         ].map(([operator, precedence]) =>
           prec.left(
             precedence,
-            bin_left_right($._expression, operator, $._expression)
-          )
+            bin_left_right($._expression, operator, $._expression),
+          ),
         ),
         ...["==", "!=", ">", ">=", "<", "<=", "=~", "!~", "is", "isnot"].map(
           (operator) =>
@@ -995,10 +996,10 @@ module.exports = grammar({
               bin_left_right(
                 $._expression,
                 seq(operator, optional($.match_case)),
-                $._expression
-              )
-            )
-        )
+                $._expression,
+              ),
+            ),
+        ),
       ),
 
     unary_operation: ($) =>
@@ -1010,7 +1011,7 @@ module.exports = grammar({
       const sign = /[+-]?/;
 
       return token(
-        seq(sign, digits, ".", digits, optional(seq(/[eE]/, sign, digits)))
+        seq(sign, digits, ".", digits, optional(seq(/[eE]/, sign, digits))),
       );
     },
 
@@ -1022,9 +1023,9 @@ module.exports = grammar({
             seq(choice("0x", "0X"), /[A-Fa-f0-9]+/),
             seq(choice("0", "0"), /[0-7]+/),
             seq(choice("0b", "0B"), /[0-1]+/),
-            /[0-9]+/
-          )
-        )
+            /[0-9]+/,
+          ),
+        ),
       ),
 
     list: ($) => seq("[", commaSep($._expression), optional(","), "]"),
@@ -1039,8 +1040,8 @@ module.exports = grammar({
           field("value", $._expression),
           "[",
           field("index", $._expression),
-          "]"
-        )
+          "]",
+        ),
       ),
 
     slice_expression: ($) =>
@@ -1052,14 +1053,14 @@ module.exports = grammar({
           optional(field("start", $._expression)),
           ":",
           optional(field("stop", $._expression)),
-          "]"
-        )
+          "]",
+        ),
       ),
 
     field_expression: ($) =>
       prec.left(
         PREC.CALL,
-        seq(field("value", $._expression), ".", field("field", $.identifier))
+        seq(field("value", $._expression), ".", field("field", $.identifier)),
       ),
 
     call_expression: ($) =>
@@ -1069,8 +1070,8 @@ module.exports = grammar({
           field("function", $._expression),
           "(",
           optional(commaSep1($._expression)),
-          ")"
-        )
+          ")",
+        ),
       ),
 
     eval_statement: ($) => command($, "eval", $._expression),
@@ -1081,12 +1082,12 @@ module.exports = grammar({
           "function",
           choice(
             alias($._immediate_identifier, $.identifier),
-            alias($._immediate_lambda_expression, $.lambda_expression)
-          )
+            alias($._immediate_lambda_expression, $.lambda_expression),
+          ),
         ),
         token.immediate("("),
         optional(commaSep1($._expression)),
-        ")"
+        ")",
       ),
 
     method_expression: ($) =>
@@ -1095,8 +1096,8 @@ module.exports = grammar({
         seq(
           field("value", $._expression),
           "->",
-          alias($._method_call_expression, $.call_expression)
-        )
+          alias($._method_call_expression, $.call_expression),
+        ),
       ),
 
     // Use default :h isfname
@@ -1111,7 +1112,7 @@ module.exports = grammar({
           // Allow wildcard
           /[*]/,
           // Escaped character
-          seq("\\", /./)
+          seq("\\", /./),
         ),
         repeat(
           choice(
@@ -1124,9 +1125,9 @@ module.exports = grammar({
               /[*]/,
               // Escaped character
               seq("\\", /./),
-            ].map(token.immediate)
-          )
-        )
+            ].map(token.immediate),
+          ),
+        ),
       ),
 
     // :h pattern
@@ -1141,14 +1142,14 @@ module.exports = grammar({
             repeat(
               choice(
                 seq("\\", /./), // escaped character
-                /[^\]\n\\]/ // any character besides ']', '\' or '\n'
-              )
+                /[^\]\n\\]/, // any character besides ']', '\' or '\n'
+              ),
             ),
-            "]"
+            "]",
           ), // square-bracket-delimited character class
           seq("\\", /./), // escaped character
-          /[^\\\[\n]/ // any character besides '[', '\' or '\n'
-        )
+          /[^\\\[\n]/, // any character besides '[', '\' or '\n'
+        ),
       ),
 
     _pattern_atom: ($) =>
@@ -1157,8 +1158,8 @@ module.exports = grammar({
           $._pattern_ordinary_atom,
           seq("\\(", $.pattern, "\\)"),
           seq("\\%(", $.pattern, "\\)"),
-          seq("\\z(", $.pattern, "\\)")
-        )
+          seq("\\z(", $.pattern, "\\)"),
+        ),
       ),
 
     _pattern_piece: ($) => seq($._pattern_atom, optional($.pattern_multi)),
@@ -1200,7 +1201,7 @@ module.exports = grammar({
         commaSep($.identifier),
         "->",
         $._expression,
-        "}"
+        "}",
       ),
 
     // :h ++opt
@@ -1212,21 +1213,21 @@ module.exports = grammar({
         choice(
           key_val_arg(
             choice(token.immediate("ff"), token.immediate("fileformat")),
-            $._immediate_file_format
+            $._immediate_file_format,
           ),
           key_val_arg(
             choice(token.immediate("enc"), token.immediate("encoding")),
-            $._immediate_encoding
+            $._immediate_encoding,
           ),
           key_val_arg(
-            choice(token.immediate("bin"), token.immediate("binary"))
+            choice(token.immediate("bin"), token.immediate("binary")),
           ),
           key_val_arg(
-            choice(token.immediate("nobin"), token.immediate("nobinary"))
+            choice(token.immediate("nobin"), token.immediate("nobinary")),
           ),
           key_val_arg(token.immediate("bad"), $._plus_plus_opt_bad),
-          key_val_arg(token.immediate("edit"))
-        )
+          key_val_arg(token.immediate("edit")),
+        ),
       ),
 
     // :h +cmd
@@ -1234,8 +1235,8 @@ module.exports = grammar({
       repeat1(
         choice(
           seq(token.immediate("\\"), token.immediate(/./)), // escaped character
-          token.immediate(/[^ \n]/) // any character besides ' ' and newline
-        )
+          token.immediate(/[^ \n]/), // any character besides ' ' and newline
+        ),
       ),
     _plus_cmd_number: ($) =>
       prec(2, alias(token.immediate(/[0-9]+/), $.integer_literal)),
@@ -1245,8 +1246,8 @@ module.exports = grammar({
       seq(
         "+",
         optional(
-          choice($._plus_cmd_number, $._plus_cmd_pattern, $._plus_cmd_command)
-        )
+          choice($._plus_cmd_number, $._plus_cmd_pattern, $._plus_cmd_command),
+        ),
       ),
 
     ...require("./rules/autocmd"),
@@ -1276,7 +1277,7 @@ function bang_range_command($, cmd, ...args) {
     optional(_cmd_range($)),
     keyword($, cmd),
     optional($.bang),
-    ...args
+    ...args,
   );
 }
 
@@ -1304,8 +1305,8 @@ function keys($, allowed_first, allowed_after = allowed_first) {
         token.immediate(allowed_after),
         token.immediate("<"),
         seq(token.immediate("\\"), token.immediate(/./)),
-        alias($._immediate_keycode, $.keycode)
-      )
-    )
+        alias($._immediate_keycode, $.keycode),
+      ),
+    ),
   );
 }
