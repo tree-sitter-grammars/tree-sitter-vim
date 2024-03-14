@@ -210,6 +210,7 @@ module.exports = grammar({
 
     unknown_builtin_statement: ($) =>
       seq(
+        field("range", alias($._range, $.range)),
         maybe_bang($, $.unknown_command_name),
         alias(repeat($.command_argument), $.arguments)
       ),
@@ -591,6 +592,7 @@ module.exports = grammar({
 
     user_command: ($) =>
       seq(
+        field("range", alias($._range, $.range)),
         maybe_bang($, $.command_name),
         alias(repeat($.command_argument), $.arguments)
       ),
