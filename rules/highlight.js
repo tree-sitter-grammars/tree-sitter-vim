@@ -10,7 +10,7 @@ module.exports = {
       optional(keyword($, "default")),
       "link",
       field("from", $.hl_group),
-      field("to", $.hl_group),
+      field("to", $.hl_group)
     ),
 
   // :h highlight-clear
@@ -38,8 +38,8 @@ module.exports = {
           "italic",
           "standout",
           "nocombine",
-        ].map(token.immediate),
-      ),
+        ].map(token.immediate)
+      )
     ),
 
   // :h highlight-cterm
@@ -76,7 +76,7 @@ module.exports = {
         "foreground",
         /#[0-9a-fA-F]{6}/,
         /[a-zA-Z]+/,
-      ].map(token.immediate),
+      ].map(token.immediate)
     ),
   _hl_key_gui_color: ($) =>
     hl_key_val(choice("guifg", "guibg", "guisp"), $.color),
@@ -99,7 +99,7 @@ module.exports = {
       $._hl_key_gui,
       $._hl_key_gui_color,
       $._hl_key_font,
-      $._hl_key_blend,
+      $._hl_key_blend
     ),
 
   _hl_body_keys: ($) =>
@@ -111,7 +111,7 @@ module.exports = {
       $._hl_body_clear,
       $._hl_body_none,
       $._hl_body_keys,
-      $._hl_body_link,
+      $._hl_body_link
     ),
 
   // :h :highlight

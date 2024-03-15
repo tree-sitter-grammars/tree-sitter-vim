@@ -10,9 +10,9 @@ module.exports = {
       optional(
         choice(
           seq("#", alias(token.immediate(/[0-9]+/), $.integer_literal)),
-          $.filename,
-        ),
-      ),
+          $.filename
+        )
+      )
     ),
 
   enew_statement: ($) => bang_command($, "enew"),
@@ -23,7 +23,7 @@ module.exports = {
       "find",
       repeat($.plus_plus_opt),
       repeat($.plus_cmd),
-      $.filename,
+      $.filename
     ),
 
   ex_statement: ($) =>
@@ -32,7 +32,7 @@ module.exports = {
       "ex",
       repeat($.plus_plus_opt),
       repeat($.plus_cmd),
-      optional($.filename),
+      optional($.filename)
     ),
 
   visual_statement: ($) =>
@@ -41,7 +41,7 @@ module.exports = {
       "visual",
       repeat($.plus_plus_opt),
       repeat($.plus_cmd),
-      optional($.filename),
+      optional($.filename)
     ),
 
   view_statement: ($) =>
@@ -50,6 +50,6 @@ module.exports = {
       "view",
       repeat($.plus_plus_opt),
       repeat($.plus_cmd),
-      $.filename,
+      $.filename
     ),
 };
