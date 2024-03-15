@@ -9613,11 +9613,11 @@
     },
     "au_once": {
       "type": "STRING",
-      "value": "++once "
+      "value": "++once"
     },
     "au_nested": {
       "type": "STRING",
-      "value": "++nested "
+      "value": "++nested"
     },
     "_autocmd_command": {
       "type": "SEQ",

@@ -145,8 +145,8 @@ module.exports = {
 
   _autocmd_pattern: ($) => commaSep1(alias(/[^ \t\n,]+/, $.pattern)),
 
-  au_once: ($) => "++once ",
-  au_nested: ($) => "++nested ",
+  au_once: ($) => "++once",
+  au_nested: ($) => "++nested",
 
   _autocmd_command: ($) =>
     seq(
