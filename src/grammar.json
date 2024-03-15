@@ -9340,6 +9340,14 @@
             },
             {
               "type": "PATTERN",
+              "value": "[sS][aA][fF][eE][sS][tT][aA][tT][eE]"
+            },
+            {
+              "type": "PATTERN",
+              "value": "[sS][aA][fF][eE][sS][tT][aA][tT][eE][aA][gG][aA][iI][nN]"
+            },
+            {
+              "type": "PATTERN",
               "value": "[sS][eE][aA][rR][cC][hH][wW][rR][aA][pP][pP][eE][dD]"
             },
             {
@@ -9605,11 +9613,11 @@
     },
     "au_once": {
       "type": "STRING",
-      "value": "++once"
+      "value": "++once "
     },
     "au_nested": {
       "type": "STRING",
-      "value": "++nested"
+      "value": "++nested "
     },
     "_autocmd_command": {
       "type": "SEQ",
@@ -14119,3 +14127,4 @@
   "inline": [],
   "supertypes": []
 }
+

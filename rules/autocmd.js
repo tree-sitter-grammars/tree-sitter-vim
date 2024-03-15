@@ -84,6 +84,8 @@ const EVENTS = [
   "RecordingEnter", // when starting to record a macro
   "RecordingLeave", // just before a macro stops recording
   "RemoteReply", // upon string reception from a remote vim
+  "SafeState", // When nothing is pending, going to wait for the user to type a character.
+  "SafeStateAgain", // When nothing is pending, going to wait for the user to type a character.
   "SearchWrapped", // after the search wrapped around
   "SessionLoadPost", // after loading a session file
   "ShellCmdPost", // after ":!cmd"
@@ -143,8 +145,8 @@ module.exports = {
 
   _autocmd_pattern: ($) => commaSep1(alias(/[^ \t\n,]+/, $.pattern)),
 
-  au_once: ($) => "++once",
-  au_nested: ($) => "++nested",
+  au_once: ($) => "++once ",
+  au_nested: ($) => "++nested ",
 
   _autocmd_command: ($) =>
     seq(
