@@ -28,14 +28,26 @@
     "test": "tree-sitter test",
     "parse": "tree-sitter parse",
     "lint": "prettier --check grammar.js keywords.js rules/*.js",
-    "format": "prettier --write grammar.js keywords.js rules/*.js"
+    "format": "prettier --write grammar.js keywords.js rules/*.js",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "dependencies": {
-    "node-addon-api": "^7.1.0"
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.21.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "prebuildify": "^6.0.0"
   },
   "tree-sitter": [
     {
