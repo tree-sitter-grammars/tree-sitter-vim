@@ -4756,6 +4756,10 @@
             "named": false
           },
           {
+            "type": "NONE",
+            "named": false
+          },
+          {
             "type": "bold",
             "named": false
           },
@@ -10282,6 +10286,10 @@
     "named": false
   },
   {
+    "type": "NONE",
+    "named": false
+  },
+  {
     "type": "OPT",
     "named": false
   },
@@ -10890,6 +10898,10 @@
     "named": true
   },
   {
+    "type": "file",
+    "named": false
+  },
+  {
     "type": "file_format",
     "named": true
   },
@@ -10903,11 +10915,11 @@
   },
   {
     "type": "filetype",
-    "named": false
+    "named": true
   },
   {
     "type": "filetype",
-    "named": true
+    "named": false
   },
   {
     "type": "finally",
