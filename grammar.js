@@ -998,7 +998,7 @@ module.exports = grammar({
           optional(/[-+]/),
           choice(
             seq(choice("0x", "0X"), /[A-Fa-f0-9]+/),
-            seq(choice("0", "0"), /[0-7]+/),
+            seq("0", /[0-7]+/),
             seq(choice("0b", "0B"), /[0-1]+/),
             /[0-9]+/
           )
