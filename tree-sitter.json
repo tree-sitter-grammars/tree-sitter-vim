@@ -1,0 +1,25 @@
+{
+  "grammars": [
+    {
+      "name": "vim",
+      "path": ".",
+      "scope": "text.vim",
+      "highlights": "queries/vim/highlights.scm",
+      "injections": "queries/vim/injections.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.4.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for Vimscript files",
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-vim"
+    },
+    "authors": [
+      {
+        "name": "Thomas Vigouroux",
+        "email": "tomvig38@gmail.com"
+      }
+    ]
+  }
+}
