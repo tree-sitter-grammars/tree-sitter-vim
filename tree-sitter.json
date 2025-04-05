@@ -4,6 +4,7 @@
       "name": "vim",
       "path": ".",
       "scope": "text.vim",
+      "file-types": [ "vim" ],
       "highlights": "queries/vim/highlights.scm",
       "injections": "queries/vim/injections.scm"
     }
