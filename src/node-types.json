@@ -224,6 +224,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -583,6 +587,10 @@
           },
           {
             "type": "stopinsert_statement",
+            "named": true
+          },
+          {
+            "type": "substitute_statement",
             "named": true
           },
           {
@@ -1148,6 +1156,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -1647,6 +1659,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -1919,6 +1935,10 @@
         },
         {
           "type": "stopinsert_statement",
+          "named": true
+        },
+        {
+          "type": "substitute_statement",
           "named": true
         },
         {
@@ -4556,6 +4576,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -5988,6 +6012,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -7318,6 +7346,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -7875,6 +7907,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -8292,6 +8328,32 @@
     "type": "stopinsert_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "substitute_statement",
+    "named": true,
+    "fields": {
+      "range": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "range",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "pattern",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "syntax_argument",
@@ -9250,6 +9312,10 @@
           "named": true
         },
         {
+          "type": "substitute_statement",
+          "named": true
+        },
+        {
           "type": "syntax_statement",
           "named": true
         },
@@ -9797,6 +9863,10 @@
         },
         {
           "type": "stopinsert_statement",
+          "named": true
+        },
+        {
+          "type": "substitute_statement",
           "named": true
         },
         {
@@ -10888,11 +10958,11 @@
   },
   {
     "type": "file",
-    "named": true
+    "named": false
   },
   {
     "type": "file",
-    "named": false
+    "named": true
   },
   {
     "type": "file_format",
@@ -10904,6 +10974,10 @@
   },
   {
     "type": "fileformat",
+    "named": false
+  },
+  {
+    "type": "filetype",
     "named": false
   },
   {
@@ -11494,6 +11568,10 @@
   {
     "type": "string_literal",
     "named": true
+  },
+  {
+    "type": "substitute",
+    "named": false
   },
   {
     "type": "sync",
