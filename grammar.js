@@ -204,6 +204,7 @@ module.exports = grammar({
           $.visual_statement,
           $.view_statement,
           $.eval_statement,
+          $.substitute_statement,
           $.user_command
         )
       ),
@@ -1052,6 +1053,8 @@ module.exports = grammar({
       ),
 
     eval_statement: ($) => command($, "eval", $._expression),
+
+    substitute_statement: ($) => range_command($, "substitute", $.pattern),
 
     _method_call_expression: ($) =>
       seq(
