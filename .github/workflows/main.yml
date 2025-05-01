@@ -2,20 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [master]
-    paths:
-      - grammar.js
-      - src/**
-      - test/**
-      - bindings/**
-      - binding.gyp
+    branches: 'master'
   pull_request:
-    paths:
-      - grammar.js
-      - src/**
-      - test/**
-      - bindings/**
-      - binding.gyp
+    branches: 'master'
+  workflow_dispatch:
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -24,7 +14,6 @@ concurrency:
 jobs:
   test:
     name: Test parser
-    runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
       matrix:
@@ -32,22 +21,30 @@ jobs:
           - ubuntu-latest
           # windows-latest
           - macos-14
+    runs-on: ${{matrix.os}}
     steps:
-      - name: Set up repository
-        uses: tree-sitter/parser-setup-action@v1.1
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action@v2
         with:
-          node-version: ${{vars.NODE_VERSION}}
-      - name: Clone neovim runtime
+          install-lib: false
+
+      - name: Run tests
+        uses: tree-sitter/parser-test-action@v2
+
+      - name: Clone neovim runtime corpus
         uses: actions/checkout@v4
         with:
           repository: neovim/neovim
           path: .tests/neovim
           sparse-checkout: runtime/
-      - name: Run tests
-        uses: tree-sitter/parser-test-action@v1.2
+
+      - name: Parse corpus
+        uses: tree-sitter/parse-action@v4
         with:
-          lint: true
-          corpus-files: |-
+          files: |-
             .tests/neovim/runtime/**/*.vim
             !.tests/neovim/runtime/autoload/ada.vim
             !.tests/neovim/runtime/autoload/adacomplete.vim
@@ -55,10 +52,9 @@ jobs:
             !.tests/neovim/runtime/autoload/decada.vim
             !.tests/neovim/runtime/autoload/gnat.vim
             !.tests/neovim/runtime/autoload/gzip.vim
+            !.tests/neovim/runtime/autoload/javaformat.vim
             !.tests/neovim/runtime/autoload/javascriptcomplete.vim
             !.tests/neovim/runtime/autoload/msgpack.vim
-            !.tests/neovim/runtime/autoload/netrw.vim
-            !.tests/neovim/runtime/autoload/netrwSettings.vim
             !.tests/neovim/runtime/autoload/phpcomplete.vim
             !.tests/neovim/runtime/autoload/provider/clipboard.vim
             !.tests/neovim/runtime/autoload/provider/perl.vim
@@ -67,32 +63,32 @@ jobs:
             !.tests/neovim/runtime/autoload/python3complete.vim
             !.tests/neovim/runtime/autoload/shada.vim
             !.tests/neovim/runtime/autoload/spellfile.vim
+            !.tests/neovim/runtime/autoload/spotbugs.vim
             !.tests/neovim/runtime/autoload/tar.vim
             !.tests/neovim/runtime/autoload/tutor.vim
             !.tests/neovim/runtime/autoload/zip.vim
-            !.tests/neovim/runtime/compiler/bdf.vim
-            !.tests/neovim/runtime/compiler/mcs.vim
+            !.tests/neovim/runtime/compiler/javac.vim
+            !.tests/neovim/runtime/compiler/maven.vim
+            !.tests/neovim/runtime/compiler/pytest.vim
+            !.tests/neovim/runtime/compiler/spotbugs.vim
+            !.tests/neovim/runtime/compiler/tsc.vim
             !.tests/neovim/runtime/ftoff.vim
             !.tests/neovim/runtime/ftplugin/abaqus.vim
+            !.tests/neovim/runtime/ftplugin/astro.vim
             !.tests/neovim/runtime/ftplugin/changelog.vim
             !.tests/neovim/runtime/ftplugin/debchangelog.vim
             !.tests/neovim/runtime/ftplugin/forth.vim
             !.tests/neovim/runtime/ftplugin/gdscript.vim
-            !.tests/neovim/runtime/ftplugin/gpg.vim
+            !.tests/neovim/runtime/ftplugin/hare.vim
+            !.tests/neovim/runtime/ftplugin/java.vim
             !.tests/neovim/runtime/ftplugin/markdown.vim
             !.tests/neovim/runtime/ftplugin/mermaid.vim
-            !.tests/neovim/runtime/ftplugin/modconf.vim
-            !.tests/neovim/runtime/ftplugin/muttrc.vim
+            !.tests/neovim/runtime/ftplugin/mojo.vim
             !.tests/neovim/runtime/ftplugin/python.vim
-            !.tests/neovim/runtime/ftplugin/readline.vim
             !.tests/neovim/runtime/ftplugin/ruby.vim
             !.tests/neovim/runtime/ftplugin/rust.vim
-            !.tests/neovim/runtime/ftplugin/sshconfig.vim
-            !.tests/neovim/runtime/ftplugin/sudoers.vim
-            !.tests/neovim/runtime/ftplugin/udevrules.vim
             !.tests/neovim/runtime/ftplugin/vhdl.vim
             !.tests/neovim/runtime/ftplugin/vim.vim
-            !.tests/neovim/runtime/ftplugin/zig.vim
             !.tests/neovim/runtime/ftplugin.vim
             !.tests/neovim/runtime/ftplugof.vim
             !.tests/neovim/runtime/indent/ada.vim
@@ -106,7 +102,11 @@ jobs:
             !.tests/neovim/runtime/keymap/*.vim
             !.tests/neovim/runtime/makemenu.vim
             !.tests/neovim/runtime/menu.vim
+            !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
+            !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrwSettings.vim
+            !.tests/neovim/runtime/pack/dist/opt/nohlsearch/plugin/nohlsearch.vim
             !.tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
             !.tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
+            !.tests/neovim/runtime/plugin/matchparen.vim
             !.tests/neovim/runtime/plugin/shada.vim
             !.tests/neovim/runtime/syntax/**/*.vim
