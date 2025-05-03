@@ -51,7 +51,6 @@ jobs:
             !.tests/neovim/runtime/autoload/context.vim
             !.tests/neovim/runtime/autoload/decada.vim
             !.tests/neovim/runtime/autoload/gnat.vim
-            !.tests/neovim/runtime/autoload/gzip.vim
             !.tests/neovim/runtime/autoload/javaformat.vim
             !.tests/neovim/runtime/autoload/javascriptcomplete.vim
             !.tests/neovim/runtime/autoload/msgpack.vim
@@ -63,7 +62,6 @@ jobs:
             !.tests/neovim/runtime/autoload/python3complete.vim
             !.tests/neovim/runtime/autoload/shada.vim
             !.tests/neovim/runtime/autoload/spellfile.vim
-            !.tests/neovim/runtime/autoload/spotbugs.vim
             !.tests/neovim/runtime/autoload/tar.vim
             !.tests/neovim/runtime/autoload/tutor.vim
             !.tests/neovim/runtime/autoload/zip.vim
@@ -73,7 +71,6 @@ jobs:
             !.tests/neovim/runtime/compiler/spotbugs.vim
             !.tests/neovim/runtime/compiler/tsc.vim
             !.tests/neovim/runtime/ftoff.vim
-            !.tests/neovim/runtime/ftplugin/abaqus.vim
             !.tests/neovim/runtime/ftplugin/astro.vim
             !.tests/neovim/runtime/ftplugin/changelog.vim
             !.tests/neovim/runtime/ftplugin/debchangelog.vim
@@ -103,7 +100,6 @@ jobs:
             !.tests/neovim/runtime/makemenu.vim
             !.tests/neovim/runtime/menu.vim
             !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
-            !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrwSettings.vim
             !.tests/neovim/runtime/pack/dist/opt/nohlsearch/plugin/nohlsearch.vim
             !.tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
             !.tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
