@@ -10,7 +10,7 @@
     }
   ],
   "metadata": {
-    "version": "0.5.0",
+    "version": "0.6.0",
     "license": "MIT",
     "description": "Tree-sitter grammar for Vimscript files",
     "links": {
