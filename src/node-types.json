@@ -11220,7 +11220,8 @@
   },
   {
     "type": "line_continuation_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "linebreaks",
