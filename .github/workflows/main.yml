@@ -62,13 +62,13 @@ jobs:
             !.tests/neovim/runtime/autoload/python3complete.vim
             !.tests/neovim/runtime/autoload/shada.vim
             !.tests/neovim/runtime/autoload/spellfile.vim
+            !.tests/neovim/runtime/autoload/spotbugs.vim
             !.tests/neovim/runtime/autoload/tar.vim
             !.tests/neovim/runtime/autoload/tutor.vim
             !.tests/neovim/runtime/autoload/zip.vim
             !.tests/neovim/runtime/compiler/javac.vim
             !.tests/neovim/runtime/compiler/maven.vim
             !.tests/neovim/runtime/compiler/pytest.vim
-            !.tests/neovim/runtime/compiler/spotbugs.vim
             !.tests/neovim/runtime/compiler/tsc.vim
             !.tests/neovim/runtime/ftoff.vim
             !.tests/neovim/runtime/ftplugin/astro.vim
