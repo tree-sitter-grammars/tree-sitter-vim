@@ -51,7 +51,6 @@ jobs:
             !.tests/neovim/runtime/autoload/context.vim
             !.tests/neovim/runtime/autoload/decada.vim
             !.tests/neovim/runtime/autoload/gnat.vim
-            !.tests/neovim/runtime/autoload/gzip.vim
             !.tests/neovim/runtime/autoload/javaformat.vim
             !.tests/neovim/runtime/autoload/javascriptcomplete.vim
             !.tests/neovim/runtime/autoload/msgpack.vim
@@ -70,10 +69,8 @@ jobs:
             !.tests/neovim/runtime/compiler/javac.vim
             !.tests/neovim/runtime/compiler/maven.vim
             !.tests/neovim/runtime/compiler/pytest.vim
-            !.tests/neovim/runtime/compiler/spotbugs.vim
             !.tests/neovim/runtime/compiler/tsc.vim
             !.tests/neovim/runtime/ftoff.vim
-            !.tests/neovim/runtime/ftplugin/abaqus.vim
             !.tests/neovim/runtime/ftplugin/astro.vim
             !.tests/neovim/runtime/ftplugin/changelog.vim
             !.tests/neovim/runtime/ftplugin/debchangelog.vim
@@ -103,7 +100,6 @@ jobs:
             !.tests/neovim/runtime/makemenu.vim
             !.tests/neovim/runtime/menu.vim
             !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
-            !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrwSettings.vim
             !.tests/neovim/runtime/pack/dist/opt/nohlsearch/plugin/nohlsearch.vim
             !.tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
             !.tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
