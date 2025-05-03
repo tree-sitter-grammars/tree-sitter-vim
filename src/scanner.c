@@ -324,7 +324,7 @@ bool tree_sitter_vim_external_scanner_scan(void *payload, TSLexer *lexer,
   }
 
   // Not sure about the punctuation here...
-  if (valid_symbols[SEP_FIRST] && iswpunct(lexer->lookahead)) {
+  if (valid_symbols[SEP_FIRST]) {
     s->separator = lexer->lookahead;
     advance(lexer, false);
     s->ignore_comments = true;
