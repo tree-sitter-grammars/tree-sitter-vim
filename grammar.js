@@ -325,6 +325,7 @@ module.exports = grammar({
     script: ($) =>
       seq(
         "<<",
+        optional(alias("trim", $.parameter)),
         choice(alias($._script_heredoc_marker, $.marker_definition), "\n"),
         alias(repeat($._heredoc_line), $.body),
         alias($._heredoc_end, $.endmarker)
