@@ -487,14 +487,14 @@ function make_keywords($) {
     KEYWORDS_FILE,
     `typedef enum {
 `,
-    (err) => {}
+    (err) => {},
   );
 
   for (const [kname, infos] of Object.entries(KEYWORDS)) {
     fs.appendFileSync(
       KEYWORDS_FILE,
       `  ${kname} = ${rules.length},\n`,
-      (err) => {}
+      (err) => {},
     );
     rules.push($["_" + infos.mandat + infos.opt]);
   }
@@ -506,7 +506,7 @@ function make_keywords($) {
 
 keyword keywords[] = {
 `,
-    (err) => {}
+    (err) => {},
   );
   rules.push($.unknown_command_name);
 
@@ -518,7 +518,7 @@ keyword keywords[] = {
     .opt = "${infos.opt}",
     .ignore_comments_after = ${infos.ignore_comments_after}
   },\n`,
-      (err) => {}
+      (err) => {},
     );
   }
 

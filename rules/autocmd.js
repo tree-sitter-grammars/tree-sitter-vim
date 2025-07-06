@@ -152,7 +152,7 @@ module.exports = {
       $._autocmd_pattern,
       optional($.au_once),
       optional($.au_nested),
-      field("command", $._statement)
+      field("command", $._statement),
     ),
 
   // :h autocmd-define
@@ -170,9 +170,9 @@ module.exports = {
           $._autocmd_command,
           seq($.au_event_list, $._autocmd_pattern),
           $._autocmd_pattern,
-          $.au_event_list
-        )
-      )
+          $.au_event_list,
+        ),
+      ),
     ),
 
   // :h autocmd-list
@@ -184,9 +184,9 @@ module.exports = {
         choice(
           seq($.au_event_list, $._autocmd_pattern),
           $._autocmd_pattern,
-          $.au_event_list
-        )
-      )
+          $.au_event_list,
+        ),
+      ),
     ),
 
   autocmd_statement: ($) =>
@@ -195,6 +195,6 @@ module.exports = {
   augroup_statement: ($) =>
     seq(
       maybe_bang($, keyword($, "augroup")),
-      alias($.identifier, $.augroup_name)
+      alias($.identifier, $.augroup_name),
     ),
 };
