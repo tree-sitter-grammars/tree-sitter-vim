@@ -51,6 +51,7 @@ jobs:
             !.tests/neovim/runtime/autoload/context.vim
             !.tests/neovim/runtime/autoload/decada.vim
             !.tests/neovim/runtime/autoload/gnat.vim
+            !.tests/neovim/runtime/autoload/htmlfold.vim
             !.tests/neovim/runtime/autoload/javaformat.vim
             !.tests/neovim/runtime/autoload/javascriptcomplete.vim
             !.tests/neovim/runtime/autoload/msgpack.vim
