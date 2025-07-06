@@ -3041,6 +3041,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "slice_expression"
+            },
+            {
+              "type": "SYMBOL",
               "name": "field_expression"
             },
             {

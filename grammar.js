@@ -488,6 +488,7 @@ module.exports = grammar({
           $.register,
           $.option,
           $.index_expression,
+          $.slice_expression,
           $.field_expression,
           $.list_assignment
         ),
