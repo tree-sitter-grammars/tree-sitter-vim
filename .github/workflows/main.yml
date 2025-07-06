@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: 'master'
+    branches: [master]
   pull_request:
-    branches: 'master'
+    branches: [master]
   workflow_dispatch:
 
 concurrency:
@@ -20,19 +20,19 @@ jobs:
         os:
           - ubuntu-latest
           # windows-latest
-          - macos-14
+          - macos-latest
     runs-on: ${{matrix.os}}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action@v2
-        with:
-          install-lib: false
+        uses: tree-sitter/setup-action/cli@v2
 
       - name: Run tests
         uses: tree-sitter/parser-test-action@v2
+        with:
+          generate: false
 
       - name: Clone neovim runtime corpus
         uses: actions/checkout@v4
@@ -46,64 +46,63 @@ jobs:
         with:
           files: |-
             .tests/neovim/runtime/**/*.vim
-            !.tests/neovim/runtime/autoload/ada.vim
-            !.tests/neovim/runtime/autoload/adacomplete.vim
-            !.tests/neovim/runtime/autoload/context.vim
-            !.tests/neovim/runtime/autoload/decada.vim
-            !.tests/neovim/runtime/autoload/gnat.vim
-            !.tests/neovim/runtime/autoload/htmlfold.vim
-            !.tests/neovim/runtime/autoload/javaformat.vim
-            !.tests/neovim/runtime/autoload/javascriptcomplete.vim
-            !.tests/neovim/runtime/autoload/msgpack.vim
-            !.tests/neovim/runtime/autoload/phpcomplete.vim
-            !.tests/neovim/runtime/autoload/provider/clipboard.vim
-            !.tests/neovim/runtime/autoload/provider/perl.vim
-            !.tests/neovim/runtime/autoload/provider/python3.vim
-            !.tests/neovim/runtime/autoload/provider/ruby.vim
-            !.tests/neovim/runtime/autoload/python3complete.vim
-            !.tests/neovim/runtime/autoload/shada.vim
-            !.tests/neovim/runtime/autoload/spellfile.vim
-            !.tests/neovim/runtime/autoload/spotbugs.vim
-            !.tests/neovim/runtime/autoload/tar.vim
-            !.tests/neovim/runtime/autoload/tutor.vim
-            !.tests/neovim/runtime/autoload/zip.vim
-            !.tests/neovim/runtime/compiler/javac.vim
-            !.tests/neovim/runtime/compiler/maven.vim
-            !.tests/neovim/runtime/compiler/pytest.vim
-            !.tests/neovim/runtime/compiler/tsc.vim
-            !.tests/neovim/runtime/ftoff.vim
-            !.tests/neovim/runtime/ftplugin/astro.vim
-            !.tests/neovim/runtime/ftplugin/changelog.vim
-            !.tests/neovim/runtime/ftplugin/debchangelog.vim
-            !.tests/neovim/runtime/ftplugin/forth.vim
-            !.tests/neovim/runtime/ftplugin/gdscript.vim
-            !.tests/neovim/runtime/ftplugin/hare.vim
-            !.tests/neovim/runtime/ftplugin/java.vim
-            !.tests/neovim/runtime/ftplugin/markdown.vim
-            !.tests/neovim/runtime/ftplugin/mermaid.vim
-            !.tests/neovim/runtime/ftplugin/mojo.vim
-            !.tests/neovim/runtime/ftplugin/python.vim
-            !.tests/neovim/runtime/ftplugin/ruby.vim
-            !.tests/neovim/runtime/ftplugin/rust.vim
-            !.tests/neovim/runtime/ftplugin/vhdl.vim
-            !.tests/neovim/runtime/ftplugin/vim.vim
-            !.tests/neovim/runtime/ftplugin.vim
-            !.tests/neovim/runtime/ftplugof.vim
-            !.tests/neovim/runtime/indent/ada.vim
-            !.tests/neovim/runtime/indent/dylan.vim
-            !.tests/neovim/runtime/indent/javascript.vim
-            !.tests/neovim/runtime/indent/krl.vim
-            !.tests/neovim/runtime/indent/php.vim
-            !.tests/neovim/runtime/indent/rapid.vim
-            !.tests/neovim/runtime/indent.vim
-            !.tests/neovim/runtime/indoff.vim
             !.tests/neovim/runtime/keymap/*.vim
-            !.tests/neovim/runtime/makemenu.vim
-            !.tests/neovim/runtime/menu.vim
-            !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
-            !.tests/neovim/runtime/pack/dist/opt/nohlsearch/plugin/nohlsearch.vim
-            !.tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
-            !.tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
-            !.tests/neovim/runtime/plugin/matchparen.vim
-            !.tests/neovim/runtime/plugin/shada.vim
             !.tests/neovim/runtime/syntax/**/*.vim
+          invalid-files: |-
+            .tests/neovim/runtime/autoload/ada.vim
+            .tests/neovim/runtime/autoload/adacomplete.vim
+            .tests/neovim/runtime/autoload/context.vim
+            .tests/neovim/runtime/autoload/decada.vim
+            .tests/neovim/runtime/autoload/gnat.vim
+            .tests/neovim/runtime/autoload/htmlfold.vim
+            .tests/neovim/runtime/autoload/javaformat.vim
+            .tests/neovim/runtime/autoload/javascriptcomplete.vim
+            .tests/neovim/runtime/autoload/msgpack.vim
+            .tests/neovim/runtime/autoload/phpcomplete.vim
+            .tests/neovim/runtime/autoload/provider/clipboard.vim
+            .tests/neovim/runtime/autoload/provider/perl.vim
+            .tests/neovim/runtime/autoload/provider/python3.vim
+            .tests/neovim/runtime/autoload/provider/ruby.vim
+            .tests/neovim/runtime/autoload/python3complete.vim
+            .tests/neovim/runtime/autoload/shada.vim
+            .tests/neovim/runtime/autoload/spellfile.vim
+            .tests/neovim/runtime/autoload/spotbugs.vim
+            .tests/neovim/runtime/autoload/tar.vim
+            .tests/neovim/runtime/autoload/tutor.vim
+            .tests/neovim/runtime/autoload/zip.vim
+            .tests/neovim/runtime/compiler/javac.vim
+            .tests/neovim/runtime/compiler/maven.vim
+            .tests/neovim/runtime/compiler/pytest.vim
+            .tests/neovim/runtime/compiler/tsc.vim
+            .tests/neovim/runtime/ftoff.vim
+            .tests/neovim/runtime/ftplugin.vim
+            .tests/neovim/runtime/ftplugin/astro.vim
+            .tests/neovim/runtime/ftplugin/changelog.vim
+            .tests/neovim/runtime/ftplugin/debchangelog.vim
+            .tests/neovim/runtime/ftplugin/forth.vim
+            .tests/neovim/runtime/ftplugin/gdscript.vim
+            .tests/neovim/runtime/ftplugin/hare.vim
+            .tests/neovim/runtime/ftplugin/java.vim
+            .tests/neovim/runtime/ftplugin/markdown.vim
+            .tests/neovim/runtime/ftplugin/mermaid.vim
+            .tests/neovim/runtime/ftplugin/mojo.vim
+            .tests/neovim/runtime/ftplugin/python.vim
+            .tests/neovim/runtime/ftplugin/ruby.vim
+            .tests/neovim/runtime/ftplugin/rust.vim
+            .tests/neovim/runtime/ftplugin/vhdl.vim
+            .tests/neovim/runtime/ftplugin/vim.vim
+            .tests/neovim/runtime/ftplugof.vim
+            .tests/neovim/runtime/indent.vim
+            .tests/neovim/runtime/indent/ada.vim
+            .tests/neovim/runtime/indent/dylan.vim
+            .tests/neovim/runtime/indent/krl.vim
+            .tests/neovim/runtime/indent/rapid.vim
+            .tests/neovim/runtime/indoff.vim
+            .tests/neovim/runtime/makemenu.vim
+            .tests/neovim/runtime/menu.vim
+            .tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
+            .tests/neovim/runtime/pack/dist/opt/nohlsearch/plugin/nohlsearch.vim
+            .tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
+            .tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
+            .tests/neovim/runtime/plugin/matchparen.vim
+            .tests/neovim/runtime/plugin/shada.vim
