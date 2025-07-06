@@ -119,6 +119,51 @@ let [fleh, b, c] = [1, 2, 3]
       (integer_literal))))
 
 ================================================================================
+Let slice assignment
+================================================================================
+
+let x[: 4] = ["aval", "bval", 1, 2]
+let y[1:] = ['a', 'b']
+let z[:] = [1, 2, 3]
+let a[1:3] = [1, 2, 3]
+
+--------------------------------------------------------------------------------
+
+(script_file
+  (let_statement
+    (slice_expression
+      (identifier)
+      (integer_literal))
+    (list
+      (string_literal)
+      (string_literal)
+      (integer_literal)
+      (integer_literal)))
+  (let_statement
+    (slice_expression
+      (identifier)
+      (integer_literal))
+    (list
+      (string_literal)
+      (string_literal)))
+  (let_statement
+    (slice_expression
+      (identifier))
+    (list
+      (integer_literal)
+      (integer_literal)
+      (integer_literal)))
+  (let_statement
+    (slice_expression
+      (identifier)
+      (integer_literal)
+      (integer_literal))
+    (list
+      (integer_literal)
+      (integer_literal)
+      (integer_literal))))
+
+================================================================================
 Let local variable
 ================================================================================
 
