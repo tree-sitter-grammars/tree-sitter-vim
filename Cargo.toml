@@ -2,12 +2,12 @@
 name = "tree-sitter-vim"
 description = "Vimscript grammar for tree-sitter"
 version = "0.6.0"
+authors = ["Thomas Vigouroux <tomvig38@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-keywords = ["incremental", "parsing", "tree-sitter", "query"]
-categories = ["parsing", "text-editors"]
+keywords = ["incremental", "parsing", "tree-sitter", "vim"]
+categories = ["parser-implementations", "parsing", "text-editors"]
 repository = "https://github.com/tree-sitter-grammars/tree-sitter-vim"
-authors = ["Thomas Vigouroux"]
 edition = "2021"
 autoexamples = false
 
@@ -15,17 +15,20 @@ build = "bindings/rust/build.rs"
 include = [
   "bindings/rust/*",
   "grammar.js",
-  "keywords.js",
-  "rules/*",
   "queries/*",
-  "src/*"
+  "src/*",
+  "tree-sitter.json",
+  "LICENSE",
 ]
 
 [lib]
 path = "bindings/rust/lib.rs"
 
 [dependencies]
-tree-sitter = ">=0.21.0"
+tree-sitter-language = "0.1"
 
 [build-dependencies]
-cc = "^1.0.89"
+cc = "1.2"
+
+[dev-dependencies]
+tree-sitter = "0.25.4"

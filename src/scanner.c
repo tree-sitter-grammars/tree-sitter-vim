@@ -68,10 +68,10 @@ void tree_sitter_vim_external_scanner_destroy(void *payload) {
 //
 // [ marker_len, marker ... (marker_len size) ]
 
-#define SC_IGNORE_COMMENTS 0
-#define SC_PAIRED_SEP 1
-#define SC_MARK_LEN 2
-#define SC_MARK 3
+#define SC_IGNORE_COMMENTS 0u
+#define SC_PAIRED_SEP 1u
+#define SC_MARK_LEN 2u
+#define SC_MARK 3u
 
 
 unsigned int tree_sitter_vim_external_scanner_serialize(void *payload,

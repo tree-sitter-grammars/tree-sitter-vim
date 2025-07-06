@@ -4,7 +4,9 @@
       "name": "vim",
       "path": ".",
       "scope": "text.vim",
-      "file-types": [ "vim" ],
+      "file-types": [
+        "vim"
+      ],
       "highlights": "queries/vim/highlights.scm",
       "injections": "queries/vim/injections.scm"
     }
@@ -12,7 +14,7 @@
   "metadata": {
     "version": "0.6.0",
     "license": "MIT",
-    "description": "Tree-sitter grammar for Vimscript files",
+    "description": "Vimscript grammar for tree-sitter",
     "links": {
       "repository": "https://github.com/tree-sitter-grammars/tree-sitter-vim"
     },

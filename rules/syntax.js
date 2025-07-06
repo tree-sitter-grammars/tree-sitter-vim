@@ -41,7 +41,7 @@ module.exports = {
       key_val_arg("transparent"),
       key_val_arg("skipwhite"),
       key_val_arg("skipnl"),
-      key_val_arg("skipempty")
+      key_val_arg("skipempty"),
     ),
 
   _syn_arguments_match: ($) =>
@@ -52,7 +52,7 @@ module.exports = {
       key_val_arg("display"),
       key_val_arg("extend"),
       key_val_arg("keepend"),
-      key_val_arg("excludenl")
+      key_val_arg("excludenl"),
     ),
 
   _syn_arguments_region: ($) =>
@@ -60,14 +60,14 @@ module.exports = {
       $._syn_arguments_match,
       key_val_arg("matchgroup", optional($.hl_groups)),
       key_val_arg("oneline"),
-      key_val_arg("concealends")
+      key_val_arg("concealends"),
     ),
 
   _syn_arguments_cluster: ($) =>
     choice(
       key_val_arg("contains", optional($.hl_groups)),
       key_val_arg("add", optional($.hl_groups)),
-      key_val_arg("remove", optional($.hl_groups))
+      key_val_arg("remove", optional($.hl_groups)),
     ),
 
   _syn_pattern_offset: ($) =>
@@ -75,14 +75,14 @@ module.exports = {
       field(
         "what",
         choice(
-          ...["ms", "me", "hs", "he", "rs", "re", "lc"].map(token.immediate)
-        )
+          ...["ms", "me", "hs", "he", "rs", "re", "lc"].map(token.immediate),
+        ),
       ),
       token.immediate("="),
       field(
         "offset",
-        choice(...[/[se]([+-][0-9]+)?/, /[0-9]/].map(token.immediate))
-      )
+        choice(...[/[se]([+-][0-9]+)?/, /[0-9]/].map(token.immediate)),
+      ),
     ),
 
   _syn_keyword: ($) =>
@@ -95,9 +95,9 @@ module.exports = {
       repeat(
         choice(
           alias($._syn_arguments_keyword, $.syntax_argument),
-          alias(/[a-zA-Z0-9\[\]_]+/, $.keyword)
-        )
-      )
+          alias(/[a-zA-Z0-9\[\]_]+/, $.keyword),
+        ),
+      ),
     ),
 
   _syn_match: ($) =>
@@ -107,7 +107,7 @@ module.exports = {
       repeat(alias($._syn_arguments_match, $.syntax_argument)),
       $._syn_hl_pattern,
       commaSep(alias($._syn_pattern_offset, $.pattern_offset)),
-      repeat(alias($._syn_arguments_match, $.syntax_argument))
+      repeat(alias($._syn_arguments_match, $.syntax_argument)),
     ),
 
   _syn_region_start: ($) => syn_region_arg($, "start"),
@@ -124,23 +124,23 @@ module.exports = {
       optional(
         seq(
           alias($._syn_region_skip, $.syntax_argument),
-          repeat(alias($._syn_arguments_region, $.syntax_argument))
-        )
+          repeat(alias($._syn_arguments_region, $.syntax_argument)),
+        ),
       ),
       // Can have multiple end
       repeat1(
         seq(
           alias($._syn_region_end, $.syntax_argument),
-          repeat(alias($._syn_arguments_region, $.syntax_argument))
-        )
-      )
+          repeat(alias($._syn_arguments_region, $.syntax_argument)),
+        ),
+      ),
     ),
 
   _syn_cluster: ($) =>
     sub_cmd(
       "cluster",
       $.hl_group,
-      repeat(alias($._syn_arguments_cluster, $.syntax_argument))
+      repeat(alias($._syn_arguments_cluster, $.syntax_argument)),
     ),
 
   _syn_include: ($) =>
@@ -148,7 +148,7 @@ module.exports = {
       "include",
       // Here we can't have pattern and `@` is mandatory
       optional(field("grouplist", seq("@", $.hl_group))),
-      $.filename
+      $.filename,
     ),
 
   // :h syn-sync
@@ -160,33 +160,33 @@ module.exports = {
         syn_sync_method(
           "linebreaks",
           token.immediate("="),
-          field("val", token.immediate(/[0-9]+/))
+          field("val", token.immediate(/[0-9]+/)),
         ),
         syn_sync_method("fromstart"),
         syn_sync_method(
           "ccomment",
           optional($.hl_group),
-          repeat($._syn_sync_lines)
+          repeat($._syn_sync_lines),
         ),
         syn_sync_method(
           choice("lines", "minlines", "maxlines"),
           token.immediate("="),
-          field("val", token.immediate(/[0-9]+/))
+          field("val", token.immediate(/[0-9]+/)),
         ),
         syn_sync_method(
           choice("match", "region"),
           $.hl_group,
           optional(seq(choice("grouphere", "groupthere"), $.hl_group)),
-          $.pattern
+          $.pattern,
         ),
         syn_sync_method(
           "linecont",
           repeat($._syn_sync_lines),
           $.pattern,
-          repeat($._syn_sync_lines)
+          repeat($._syn_sync_lines),
         ),
-        syn_sync_method("clear", optional($.hl_group))
-      )
+        syn_sync_method("clear", optional($.hl_group)),
+      ),
     ),
 
   _syn_list: ($) => sub_cmd("list", optional($.hl_group)),
@@ -214,16 +214,16 @@ module.exports = {
           $._syn_include,
           $._syn_sync,
           $._syn_list,
-          $._syn_clear
-        )
-      )
+          $._syn_clear,
+        ),
+      ),
     ),
 };
 
 function syn_region_arg($, name) {
   return seq(
     key_val_arg(name, $._syn_hl_pattern),
-    commaSep(alias($._syn_pattern_offset, $.pattern_offset))
+    commaSep(alias($._syn_pattern_offset, $.pattern_offset)),
   );
 }
 
