@@ -1,3 +1,8 @@
+tab echo "foo"
+" <- @keyword
+"   ^ @keyword
+"        ^ @string
+
 vertical echo "foo"
 " <- @keyword
 "        ^ @keyword

@@ -41,6 +41,7 @@ Command modifiers for window placement
 ================================================================================
 
 vertical echo foo
+tab echo foo
 leftabove echo foo
 aboveleft echo foo
 rightbelow echo foo
@@ -52,6 +53,9 @@ botright echo foo
 
 (script_file
   (vertical_statement
+    (echo_statement
+      (identifier)))
+  (tab_statement
     (echo_statement
       (identifier)))
   (aboveleft_statement
