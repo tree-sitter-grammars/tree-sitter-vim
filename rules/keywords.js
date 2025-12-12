@@ -81,6 +81,7 @@ export function keywords($) {
     $._call,
     $._break,
     $._continue,
+    $._tab,
     $._vertical,
     $._leftabove,
     $._aboveleft,

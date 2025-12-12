@@ -173,6 +173,7 @@ export default grammar({
           $.throw_statement,
           $.autocmd_statement,
           $.silent_statement,
+          $.tab_statement,
           $.vertical_statement,
           $.belowright_statement,
           $.aboveleft_statement,
@@ -587,6 +588,7 @@ export default grammar({
     execute_statement: ($) => command($, "execute", repeat1($._expression)),
 
     silent_statement: ($) => command_modifier($, "silent", true),
+    tab_statement: ($) => command_modifier($, "tab", false),
     vertical_statement: ($) => command_modifier($, "vertical", false),
     topleft_statement: ($) => command_modifier($, "topleft", false),
     botright_statement: ($) => command_modifier($, "botright", false),
