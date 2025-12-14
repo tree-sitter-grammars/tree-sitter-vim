@@ -22,5 +22,15 @@
         "email": "tomvig38@gmail.com"
       }
     ]
+  },
+  "bindings": {
+    "rust": false,
+    "node": false,
+    "c": false,
+    "python": false,
+    "go": false,
+    "java": false,
+    "swift": false,
+    "zig": false
   }
 }

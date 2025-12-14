@@ -94,7 +94,7 @@ const PREC = {
   CALL: 8, //expr[n] expr[n:m] expr.name expr(...)
 };
 
-module.exports = grammar({
+export default grammar({
   name: "vim",
 
   word: ($) => $.keyword,
