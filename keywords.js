@@ -476,9 +476,10 @@ const KEYWORDS = {
   },
 };
 
+import fs from "fs";
+import path from "path";
+
 function make_keywords($) {
-  const fs = require("fs");
-  const path = require("path");
   const KEYWORDS_FILE = path.join("src", "keywords.h");
 
   let rules = [];
@@ -527,6 +528,4 @@ keyword keywords[] = {
   return rules;
 }
 
-module.exports = {
-  keywords: make_keywords,
-};
+export { make_keywords as keywords };

@@ -1,12 +1,12 @@
-const {
+import {
   key_val_arg,
   sub_cmd,
   commaSep1,
   commaSep,
   command,
-} = require("./utils");
+} from "./utils.js";
 
-module.exports = {
+export default {
   // :h :syn-define
 
   _syn_enable: ($) => sub_cmd(choice("enable", "on", "off", "reset")),

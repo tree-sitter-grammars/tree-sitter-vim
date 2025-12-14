@@ -1,6 +1,6 @@
-const { key_val_arg, keyword, command, bang_command } = require("./utils");
+import { key_val_arg, keyword, command, bang_command } from "./utils.js";
 
-module.exports = {
+export default {
   // :h user-commands
   command_name: ($) => /[A-Z][A-Za-z0-9]*/,
 
