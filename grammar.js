@@ -9,7 +9,7 @@ import {
   sep1,
   command,
 } from "./rules/utils.js";
-import { keywords } from "./keywords.js";
+import { keywords } from "./rules/keywords.js";
 import autocmd from "./rules/autocmd.js";
 import highlight from "./rules/highlight.js";
 import syntax from "./rules/syntax.js";
