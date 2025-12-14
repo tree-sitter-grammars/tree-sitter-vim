@@ -1,6 +1,6 @@
-const { keyword, maybe_bang, commaSep1 } = require("./utils");
+import { keyword, maybe_bang, commaSep1 } from "./utils.js";
 
-module.exports = {
+export default {
   // :h group-name
   hl_group: ($) => /[a-zA-Z0-9_@.]+/,
 

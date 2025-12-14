@@ -1,5 +1,5 @@
 /// <reference types="tree-sitter-cli/dsl" />
-const {
+import {
   key_val_arg,
   maybe_bang,
   keyword,
@@ -8,7 +8,13 @@ const {
   commaSep1,
   sep1,
   command,
-} = require("./rules/utils");
+} from "./rules/utils.js";
+import { keywords } from "./keywords.js";
+import autocmd from "./rules/autocmd.js";
+import highlight from "./rules/highlight.js";
+import syntax from "./rules/syntax.js";
+import cmd from "./rules/command.js";
+import edit from "./rules/edit.js";
 
 const MAP_OPTIONS = any_order(
   "<buffer>",
@@ -124,7 +130,7 @@ export default grammar({
       $.comment,
       $.line_continuation_comment,
       $._bang_filter,
-    ].concat(require("./keywords").keywords($)),
+    ].concat(keywords($)),
 
   extras: ($) => [$._line_continuation, $.line_continuation_comment, /[\t ]/],
 
@@ -1259,11 +1265,21 @@ export default grammar({
         )
       ),
 
-    ...require("./rules/autocmd"),
-    ...require("./rules/command"),
-    ...require("./rules/highlight"),
-    ...require("./rules/syntax"),
-    ...require("./rules/edit"),
+    ...Object.fromEntries(
+      Object.entries(autocmd).map(([key, fn]) => [key, $ => fn($)])
+    ),
+    ...Object.fromEntries(
+      Object.entries(cmd).map(([key, fn]) => [key, $ => fn($)])
+    ),
+    ...Object.fromEntries(
+      Object.entries(highlight).map(([key, fn]) => [key, $ => fn($)])
+    ),
+    ...Object.fromEntries(
+      Object.entries(syntax).map(([key, fn]) => [key, $ => fn($)])
+    ),
+    ...Object.fromEntries(
+      Object.entries(edit).map(([key, fn]) => [key, $ => fn($)])
+    ),
   },
 });
 

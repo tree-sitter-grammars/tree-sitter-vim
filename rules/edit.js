@@ -1,6 +1,6 @@
-const { command, bang_command } = require("./utils");
+import { command, bang_command } from "./utils.js";
 
-module.exports = {
+export default {
   edit_statement: ($) =>
     bang_command(
       $,

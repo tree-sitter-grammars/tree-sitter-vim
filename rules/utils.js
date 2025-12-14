@@ -51,7 +51,7 @@ function bang_command($, cmd, ...args) {
   return seq(maybe_bang($, keyword($, cmd)), ...args);
 }
 
-module.exports = {
+export {
   key_val_arg,
   maybe_bang,
   keyword,
