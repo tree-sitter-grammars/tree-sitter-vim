@@ -11011,10 +11011,6 @@
     "named": true
   },
   {
-    "type": "filetype",
-    "named": false
-  },
-  {
     "type": "finally",
     "named": false
   },
@@ -11188,11 +11184,11 @@
   },
   {
     "type": "keyword",
-    "named": true
+    "named": false
   },
   {
     "type": "keyword",
-    "named": false
+    "named": true
   },
   {
     "type": "koi8",
