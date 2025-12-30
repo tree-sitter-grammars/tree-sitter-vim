@@ -336,6 +336,10 @@
             {
               "type": "SYMBOL",
               "name": "user_command"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "shebang"
             }
           ]
         }
@@ -4044,6 +4048,27 @@
           },
           "named": true,
           "value": "arguments"
+        }
+      ]
+    },
+    "shebang": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#!"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": ".+"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
