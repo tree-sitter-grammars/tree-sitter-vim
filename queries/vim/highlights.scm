@@ -242,6 +242,8 @@
 
 (line_continuation_comment) @comment
 
+(shebang) @keyword.directive
+
 (pattern) @string.special
 
 (pattern_multi) @string.regexp

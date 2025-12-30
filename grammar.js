@@ -213,7 +213,8 @@ export default grammar({
           $.view_statement,
           $.eval_statement,
           $.substitute_statement,
-          $.user_command
+          $.user_command,
+          $.shebang,
         )
       ),
 
@@ -611,6 +612,8 @@ export default grammar({
         maybe_bang($, $.command_name),
         alias(repeat($.command_argument), $.arguments)
       ),
+
+    shebang: ($) => seq('#!', optional(/.+/)),
 
     command_argument: ($) => choice($.string_literal, /\S+/),
 
