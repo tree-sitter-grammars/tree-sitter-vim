@@ -98,7 +98,6 @@ jobs:
             !.tests/neovim/runtime/pack/dist/opt/netrw/autoload/netrw.vim
             !.tests/neovim/runtime/pack/dist/opt/swapmouse/plugin/swapmouse.vim
             !.tests/neovim/runtime/pack/dist/opt/termdebug/plugin/termdebug.vim
-            !.tests/neovim/runtime/plugin/matchparen.vim
             !.tests/neovim/runtime/syntax/**/*.vim
 
   query:
