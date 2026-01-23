@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-vim",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Tree-sitter grammar for Vimscript files",
   "type": "module",
   "repository": {
