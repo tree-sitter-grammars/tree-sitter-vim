@@ -1,10 +1,13 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
       "name": "vim",
-      "path": ".",
       "scope": "text.vim",
-      "file-types": [ "vim" ],
+      "path": ".",
+      "file-types": [
+        "vim"
+      ],
       "highlights": "queries/vim/highlights.scm",
       "injections": "queries/vim/injections.scm"
     }
@@ -13,23 +16,23 @@
     "version": "0.8.0",
     "license": "MIT",
     "description": "Tree-sitter grammar for Vimscript files",
-    "links": {
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-vim"
-    },
     "authors": [
       {
         "name": "Thomas Vigouroux",
         "email": "tomvig38@gmail.com"
       }
-    ]
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-vim"
+    }
   },
   "bindings": {
-    "rust": false,
-    "node": false,
     "c": false,
-    "python": false,
     "go": false,
     "java": false,
+    "node": false,
+    "python": false,
+    "rust": false,
     "swift": false,
     "zig": false
   }
