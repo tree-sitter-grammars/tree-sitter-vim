@@ -323,7 +323,7 @@ export default grammar({
       seq("=", choice($.chunk, $.script))
     ),
     ruby_statement: ($) => command($, "ruby", choice($.chunk, $.script)),
-    python_statement: ($) => command($, "python", choice($.chunk, $.script)),
+    python_statement: ($) => command($, choice("python", "python3"), choice($.chunk, $.script)),
     perl_statement: ($) => command($, "perl", choice($.chunk, $.script)),
 
     chunk: ($) => /<|(<[^\n<]|[^\s<])[^\n]*/,
