@@ -46,6 +46,7 @@ jobs:
             .tests/neovim/runtime/**/*.vim
             !.tests/neovim/runtime/autoload/ada.vim
             !.tests/neovim/runtime/autoload/adacomplete.vim
+            !.tests/neovim/runtime/autoload/beancountcomplete.vim
             !.tests/neovim/runtime/autoload/context.vim
             !.tests/neovim/runtime/autoload/decada.vim
             !.tests/neovim/runtime/autoload/gnat.vim
@@ -88,6 +89,7 @@ jobs:
             !.tests/neovim/runtime/ftplugof.vim
             !.tests/neovim/runtime/indent/ada.vim
             !.tests/neovim/runtime/indent/dylan.vim
+            !.tests/neovim/runtime/indent/karel.vim
             !.tests/neovim/runtime/indent/krl.vim
             !.tests/neovim/runtime/indent/rapid.vim
             !.tests/neovim/runtime/indent.vim
