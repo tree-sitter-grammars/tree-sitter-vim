@@ -278,8 +278,8 @@ static bool try_lex_keyword(char *possible, keyword keyword) {
 
   size_t mandat_len = i;
   // Now try lexing optional part
-  for (size_t i = 0; keyword.opt[i] && possible[mandat_len + i]; i++) {
-    if (possible[mandat_len + i] != keyword.opt[i]) {
+  for (size_t j = 0; keyword.opt[j] && possible[mandat_len + j]; j++) {
+    if (possible[mandat_len + j] != keyword.opt[j]) {
       return false;
     }
   }
